@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 
 import {
   BF_ORDER_SUCCESS_KEY,
@@ -50,24 +50,30 @@ function slotWords(slot: string) {
   return slot;
 }
 
-export function OrderSuccessContent() {
+type OrderSuccessProps = { expectedOrderId?: string };
+
+export function OrderSuccessContent({ expectedOrderId }: OrderSuccessProps) {
   const [data, setData] = useState<OrderSuccessPayload | "missing" | "loading">("loading");
 
   useEffect(() => {
-    queueMicrotask(() => {
+    startTransition(() => {
       const raw = sessionStorage.getItem(BF_ORDER_SUCCESS_KEY);
       if (!raw) {
         setData("missing");
         return;
       }
       try {
-        setData(JSON.parse(raw) as OrderSuccessPayload);
-        sessionStorage.removeItem(BF_ORDER_SUCCESS_KEY);
+        const parsed = JSON.parse(raw) as OrderSuccessPayload;
+        if (expectedOrderId && parsed.id !== expectedOrderId) {
+          setData("missing");
+          return;
+        }
+        setData(parsed);
       } catch {
         setData("missing");
       }
     });
-  }, []);
+  }, [expectedOrderId]);
 
   if (data === "loading") {
     return (

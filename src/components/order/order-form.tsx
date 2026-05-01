@@ -141,6 +141,14 @@ export function OrderForm({ initialCakeSlug = null, className }: Props) {
   }, [localFiles]);
 
   useEffect(() => {
+    try {
+      sessionStorage.removeItem(BF_ORDER_SUCCESS_KEY);
+    } catch {
+      /* private mode */
+    }
+  }, []);
+
+  useEffect(() => {
     return () => {
       filesRef.current.forEach((f) => URL.revokeObjectURL(f.previewUrl));
     };
@@ -291,7 +299,7 @@ export function OrderForm({ initialCakeSlug = null, className }: Props) {
       // storage full or disabled; still navigate
     }
 
-    router.push("/order/success");
+    router.push(`/order/success/${json.id}`);
   }
 
   const triggerClass =

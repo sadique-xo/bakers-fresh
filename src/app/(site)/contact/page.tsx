@@ -3,7 +3,13 @@ import Link from "next/link";
 import { MessageCircle, Phone } from "lucide-react";
 
 import { getSiteOutlets } from "@/lib/queries/public-content";
-import { sitePhoneDisplay, sitePhoneTel, siteWhatsappUrl } from "@/lib/site";
+import {
+  sitePhoneDisplay,
+  sitePhoneTel,
+  sitePhoneLalpurDisplay,
+  sitePhoneLalpurTel,
+  siteWhatsappUrl,
+} from "@/lib/site";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -28,14 +34,27 @@ export default async function ContactPage() {
         </p>
         <ul className="mt-10 space-y-6 font-sans">
           <li>
+            <p className="text-xs font-medium uppercase tracking-wider text-[var(--color-ink-subtle)]">
+              main reservations &amp; custom orders (bit mesra, neori, bariatu)
+            </p>
             <a
               href={sitePhoneTel}
-              className="inline-flex items-center gap-3 text-[var(--color-brand-pink)] hover:underline"
+              className="mt-1 inline-flex items-center gap-3 text-[var(--color-brand-pink)] hover:underline"
             >
               <Phone className="size-6 shrink-0" aria-hidden />
-              <span className="text-lg font-semibold text-[var(--color-ink)]">
-                {sitePhoneDisplay}
-              </span>
+              <span className="text-lg font-semibold text-[var(--color-ink)]">{sitePhoneDisplay}</span>
+            </a>
+          </li>
+          <li>
+            <p className="text-xs font-medium uppercase tracking-wider text-[var(--color-ink-subtle)]">
+              lalpur chowk (main retail counter)
+            </p>
+            <a
+              href={sitePhoneLalpurTel()}
+              className="mt-1 inline-flex items-center gap-3 text-[var(--color-brand-pink)] hover:underline"
+            >
+              <Phone className="size-6 shrink-0" aria-hidden />
+              <span className="text-lg font-semibold text-[var(--color-ink)]">{sitePhoneLalpurDisplay}</span>
             </a>
           </li>
           <li>

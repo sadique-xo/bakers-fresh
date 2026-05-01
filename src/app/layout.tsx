@@ -2,10 +2,6 @@ import type { Metadata } from "next";
 import { Caveat, Fraunces, Inter, Geist } from "next/font/google";
 
 import { AppToaster } from "@/components/providers/app-toaster";
-import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SiteHeader } from "@/components/layout/site-header";
-import { getSiteOutlets } from "@/lib/queries/public-content";
 import {
   defaultKeywords,
   defaultOgImageUrl,
@@ -16,7 +12,7 @@ import {
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const inter = Inter({
   subsets: ["latin"],
@@ -75,26 +71,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const outlets = await getSiteOutlets();
-
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={cn("h-full", "scroll-smooth", inter.variable, fraunces.variable, caveat.variable, "font-sans", geist.variable)}
+      className={cn(
+        "h-full",
+        "scroll-smooth",
+        inter.variable,
+        fraunces.variable,
+        caveat.variable,
+        "font-sans",
+        geist.variable,
+      )}
     >
-      <body className="flex min-h-full flex-col font-sans">
-        <SiteHeader />
-        <main className="flex flex-1 flex-col pt-16 pb-24 md:pb-0 md:pt-[4.5rem]">
-          {children}
-        </main>
-        <SiteFooter outlets={outlets} />
-        <MobileBottomNav />
+      <body className="flex min-h-full flex-col font-sans antialiased">
+        {children}
         <AppToaster />
       </body>
     </html>

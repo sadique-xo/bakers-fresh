@@ -11,7 +11,12 @@ import {
 } from "lucide-react";
 
 import type { SiteOutlet } from "@/lib/catalog";
-import { sitePhoneDisplay, sitePhoneTel, siteWhatsappUrl } from "@/lib/site";
+import {
+  formatIndiaPhone,
+  sitePhoneDisplay,
+  sitePhoneTel,
+  siteWhatsappUrl,
+} from "@/lib/site";
 
 const quickLinks = [
   { href: "/", label: "home" },
@@ -85,11 +90,11 @@ export function SiteFooter({ outlets }: FooterProps) {
                   {o.shortAddress}
                   <br />
                   <a
-                    href={sitePhoneTel}
+                    href={`tel:${o.phone.replace(/\s/g, "")}`}
                     className="inline-flex items-center gap-1 text-[var(--color-brand-pink)] hover:underline"
                   >
                     <Phone className="size-3.5" aria-hidden />
-                    {sitePhoneDisplay.replace(/\s/g, " ").trim()}
+                    {formatIndiaPhone(o.phone)}
                   </a>
                 </span>
               </li>
@@ -134,7 +139,19 @@ export function SiteFooter({ outlets }: FooterProps) {
       </div>
 
       <div className="mx-auto max-w-7xl border-t border-[var(--color-border-soft)] px-5 pt-8 text-center md:px-8">
-        <p className="text-sm leading-relaxed text-[var(--color-ink-subtle)]">
+        <p className="text-xs leading-relaxed text-[var(--color-ink-subtle)]">
+          fssai 21121002000126 · 21121017000404
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-subtle)]">
+          <a
+            href={sitePhoneTel}
+            className="inline-flex items-center justify-center gap-1 font-medium text-[var(--color-brand-pink)] underline-offset-4 hover:underline"
+          >
+            <Phone className="size-3.5" aria-hidden />
+            {sitePhoneDisplay}
+          </a>
+        </p>
+        <p className="mt-6 text-sm leading-relaxed text-[var(--color-ink-subtle)]">
           © {new Date().getFullYear()} baker&apos;s fresh. handcrafted in
           ranchi.
         </p>

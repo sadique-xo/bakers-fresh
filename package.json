@@ -11,13 +11,15 @@
     "seed:catalog": "node scripts/seed-catalog-api.mjs",
     "seed:catalog:dry-run": "node scripts/seed-catalog-api.mjs --dry-run",
     "upload:catalog-storage": "node scripts/upload-catalog-to-supabase.mjs",
-    "upload:catalog-storage:dry-run": "node scripts/upload-catalog-to-supabase.mjs --dry-run"
+    "upload:catalog-storage:dry-run": "node scripts/upload-catalog-to-supabase.mjs --dry-run",
+    "admin:bootstrap": "node --env-file=.env.local scripts/create-admin-user.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
     "@hookform/resolvers": "^5.2.2",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.105.1",
+    "@tanstack/react-table": "^8.21.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",

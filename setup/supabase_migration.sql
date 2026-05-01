@@ -35,7 +35,7 @@ BEGIN
   NEW.updated_at := NOW();
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SET search_path = public;
 
 -- ============================================================================
 -- CATEGORIES
@@ -142,7 +142,7 @@ BEGIN
   END IF;
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SET search_path = public;
 
 CREATE TRIGGER set_order_number
   BEFORE INSERT ON orders
@@ -261,7 +261,7 @@ INSERT INTO locations (slug, name, is_main, address, phone, whatsapp, google_map
     'Lalpur',
     true,
     'Bimal Shopping Complex, Lalpur, near Central Bank, opposite Amravati Complex, Ranchi 834001',
-    '+917004502102',
+    '+919934627281',
     '+917004502102',
     'https://maps.google.com/?q=Bakers+Fresh+Lalpur+Ranchi',
     '{"monday":"8:00 AM - 10:00 PM","tuesday":"8:00 AM - 10:00 PM","wednesday":"8:00 AM - 10:00 PM","thursday":"8:00 AM - 10:00 PM","friday":"8:00 AM - 10:00 PM","saturday":"8:00 AM - 10:00 PM","sunday":"8:00 AM - 10:00 PM"}'::jsonb,

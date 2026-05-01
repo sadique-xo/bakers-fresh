@@ -8,78 +8,115 @@ import {
   getCatalogCakes,
   getFeaturedCakes,
   getFeaturedTestimonials,
+  getHomePromoCakes,
   getSiteOutlets,
+  type HomePromoSlide,
 } from "@/lib/queries/public-content";
 import { buildHomeMetadata } from "@/lib/seo";
 import {
+  HOME_MOST_LOVED_SLOTS,
   STITCH_FALLBACK_FEATURED,
   STITCH_HOME_HERO,
-  STITCH_HOME_SPOTLIGHT_IMAGES,
 } from "@/lib/stitch-home-assets";
+import { formatIndiaPhone, siteWhatsappUrl } from "@/lib/site";
 
 export const metadata: Metadata = buildHomeMetadata();
 
-function dedupeUrls(urls: string[]): string[] {
-  const seen = new Set<string>();
-  const out: string[] = [];
-  for (const u of urls) {
-    if (!u || seen.has(u)) continue;
-    seen.add(u);
-    out.push(u);
-  }
-  return out;
-}
-
 function HeroSection() {
   return (
-    <section className="relative w-full overflow-hidden px-5 py-10 md:mx-auto md:max-w-7xl md:px-8 md:py-14 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-16">
+    <section className="relative isolate w-full overflow-hidden bg-[var(--color-buttercream)]">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_10%_20%,rgba(233,30,99,0.12),transparent_55%),radial-gradient(ellipse_70%_45%_at_90%_10%,rgba(252,228,236,0.9),transparent_50%)]"
+        className="pointer-events-none absolute inset-0 opacity-[0.4] [background-image:radial-gradient(circle_at_1px_1px,rgba(168,216,199,0.16)_1px,transparent_0)] [background-size:21px_21px]"
       />
-      <div className="relative z-10 flex flex-col items-center text-center lg:items-start lg:text-left">
-        <p className="mb-3 font-[family-name:var(--font-handwritten)] text-2xl text-[var(--color-brand-pink)] md:text-[1.65rem]">
-          fresh from our oven
-        </p>
-        <h1 className="max-w-xl font-serif text-4xl font-bold leading-[1.1] tracking-tight text-[var(--color-ink)] md:text-5xl">
-          bite into pure joy, one slice at a time.
-        </h1>
-        <p className="mt-4 max-w-lg font-sans text-lg leading-relaxed text-[var(--color-ink-soft)]">
-          handcrafted pastries and custom cakes made with love, fresh daily in
-          ranchi.
-        </p>
-        <div className="mt-8 flex w-full max-w-md flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
-          <Link
-            href="/order"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/50 bg-[var(--color-brand-pink)] px-8 py-3.5 font-sans text-xs font-bold uppercase tracking-wider text-white shadow-[0_10px_28px_-6px_rgba(233,30,99,0.4)] transition-[transform,filter] hover:brightness-105 active:scale-[0.98]"
-          >
-            <Cake className="size-[18px]" aria-hidden />
-            order custom cake
-          </Link>
-          <Link
-            href="/cakes"
-            className="inline-flex items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white/90 px-8 py-3.5 font-sans text-xs font-bold uppercase tracking-wider text-[var(--color-brand-pink-deep)] shadow-sm transition-colors hover:bg-[var(--color-cream-soft)]"
-          >
-            view our cakes
-          </Link>
-        </div>
-      </div>
-      <div className="relative z-10 mt-10 w-full lg:mt-0">
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] ambient-shadow md:aspect-[5/4] lg:max-h-[min(28rem,70vh)] lg:rounded-3xl">
-          <Image
-            src={STITCH_HOME_HERO}
-            alt="layered pink buttercream celebration cake with berries and gold accents"
-            fill
-            priority
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="object-cover"
-          />
-          <div className="absolute bottom-4 right-4 rotate-[-5deg] rounded-full bg-[color-mix(in_srgb,var(--color-cream)_88%,transparent)] px-4 py-2 shadow-sm backdrop-blur-sm">
-            <span className="font-[family-name:var(--font-handwritten)] text-xl text-[var(--color-brand-pink)]">
-              fresh out the oven!
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_18%_-8%,rgba(233,30,99,0.06),transparent_52%),radial-gradient(ellipse_65%_50%_at_98%_18%,rgba(252,228,236,0.5),transparent_58%)]"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-14 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:items-center lg:gap-x-14 lg:gap-y-12 lg:py-[4.5rem]">
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <span className="mb-4 inline-flex items-center rounded-full border border-[var(--color-navbar-line)] bg-white/55 px-4 py-1.5 shadow-sm backdrop-blur-sm">
+            <span className="font-[family-name:var(--font-handwritten)] text-xl text-[var(--color-brand-pink-deep)] md:text-[1.35rem]">
+              fresh from our oven
             </span>
+          </span>
+          <h1 className="max-w-xl font-serif text-4xl font-bold leading-[1.06] tracking-tight text-[var(--color-ink)] md:text-5xl lg:text-[3.35rem]">
+            bite into pure joy.
+          </h1>
+          <p className="mt-5 max-w-[28rem] font-sans text-base leading-relaxed text-[var(--color-ink-soft)] md:text-lg">
+            handcrafted cakes, made fresh daily in ranchi. share what you imagine, we&apos;ll bake it.
+          </p>
+          <div className="mt-9 flex w-full max-w-md flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <Link
+              href="/order"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-brand-pink)] px-8 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white shadow-[0_12px_32px_-8px_rgba(233,30,99,0.42)] ring-2 ring-[color-mix(in_srgb,var(--color-brand-pink)_35%,transparent)] transition-[filter,transform] hover:brightness-[1.03] active:scale-[0.985]"
+            >
+              <Cake className="size-[18px]" aria-hidden />
+              order custom cake
+            </Link>
+            <Link
+              href="/cakes"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--color-ink)]/[0.08] bg-white/85 px-8 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-[var(--color-brand-pink-deep)] shadow-[0_8px_24px_-10px_rgba(40,23,26,0.1)] backdrop-blur-sm transition-colors hover:bg-white"
+            >
+              view our cakes
+            </Link>
+          </div>
+          <ul
+            className="mt-8 flex max-w-xl list-none flex-wrap justify-center gap-1.5 lg:justify-start"
+            aria-label="Trust and credentials"
+          >
+            <li>
+              <span className="inline-flex items-center rounded-full border border-[var(--color-navbar-line)] bg-white/70 px-2 py-0.5 font-sans text-[9px] font-bold uppercase tracking-[0.08em] text-[var(--color-ink)] shadow-sm backdrop-blur-sm md:px-2.5 md:py-1 md:text-[10px] md:tracking-[0.07em]">
+                5,000+ celebrations
+              </span>
+            </li>
+            <li>
+              <span className="inline-flex items-center rounded-full border border-[var(--color-navbar-line)] bg-white/70 px-2 py-0.5 font-sans text-[9px] font-semibold uppercase tracking-[0.08em] text-[var(--color-ink-soft)] shadow-sm backdrop-blur-sm md:px-2.5 md:py-1 md:text-[10px] md:tracking-[0.07em]">
+                4 outlets in ranchi
+              </span>
+            </li>
+            <li>
+              <span className="inline-flex items-center rounded-full border border-[var(--color-navbar-line)] bg-white/70 px-2 py-0.5 font-sans text-[9px] font-semibold uppercase tracking-[0.08em] text-[var(--color-ink-soft)] shadow-sm backdrop-blur-sm md:px-2.5 md:py-1 md:text-[10px] md:tracking-[0.07em]">
+                pure veg options
+              </span>
+            </li>
+            <li>
+              <span className="inline-flex items-center rounded-full border border-[var(--color-navbar-line)] bg-white/70 px-2 py-0.5 font-sans text-[9px] font-semibold uppercase tracking-[0.08em] text-[var(--color-ink-subtle)] shadow-sm backdrop-blur-sm md:px-2.5 md:py-1 md:text-[10px] md:tracking-[0.07em]">
+                fssai certified
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="relative z-10 mt-12 flex w-full justify-center lg:mt-0">
+          <div className="relative aspect-square w-full max-w-xl overflow-hidden rounded-[1.85rem] md:rounded-[2.25rem]">
+            <Image
+              src={STITCH_HOME_HERO}
+              alt="baker&apos;s fresh celebration cake"
+              fill
+              priority
+              sizes="(min-width: 1024px) 36rem, 100vw"
+              className="object-cover object-center"
+            />
+            <div className="pointer-events-none absolute bottom-4 right-4 rotate-[-4deg] rounded-full bg-[color-mix(in_srgb,white_82%,transparent)] px-4 py-2.5 backdrop-blur-md">
+              <span className="font-[family-name:var(--font-handwritten)] text-xl text-[var(--color-brand-pink-deep)] md:text-[1.35rem]">
+                fresh out the oven!
+              </span>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className="relative z-[2] mt-[-1px] w-full overflow-hidden text-[color-mix(in_srgb,var(--color-cream-soft)_58%,white)]">
+        <svg
+          className="relative block h-12 w-full min-w-[100%] sm:h-14 xl:h-[3.65rem]"
+          viewBox="0 0 1440 54"
+          preserveAspectRatio="none"
+          aria-hidden
+        >
+          <path fill="currentColor" d="M0 36c120-22 288-38 448-34 192 4 368 42 572 38 208-5 368-56 420-72v86H0V36z" />
+        </svg>
       </div>
     </section>
   );
@@ -102,10 +139,15 @@ function FeaturedSection({ cakes }: { cakes: CatalogCake[] }) {
   return (
     <section className="w-full bg-[color-mix(in_srgb,var(--color-cream-soft)_55%,white)] py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="mb-6 flex items-end justify-between gap-4">
-          <h2 className="font-serif text-3xl font-semibold text-[var(--color-ink)]">
-            featured bakes
-          </h2>
+        <div className="mb-6 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="font-serif text-3xl font-semibold text-[var(--color-ink)]">
+              our most-loved cakes
+            </h2>
+            <p className="mt-2 max-w-lg font-sans text-sm leading-relaxed text-[var(--color-ink-soft)] md:text-[0.95rem]">
+              from classic flavours to mithai fusion, freshly baked every day.
+            </p>
+          </div>
           <Link
             href="/cakes"
             className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-brand-pink)] hover:underline"
@@ -115,16 +157,17 @@ function FeaturedSection({ cakes }: { cakes: CatalogCake[] }) {
           </Link>
         </div>
         <div className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 lg:grid-cols-4">
-          {cakes.map((cake) => (
+          {cakes.map((cake, index) => (
             <article
               key={cake.slug}
               className="group relative flex w-[min(100%,18rem)] shrink-0 snap-center flex-col overflow-hidden rounded-2xl bg-[var(--color-cream)] ambient-shadow md:w-auto"
             >
-              <div className="relative h-48 w-full overflow-hidden">
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Image
                   src={cake.image}
                   alt={cake.name}
                   fill
+                  priority={index < 2}
                   sizes="(min-width: 1024px) 22vw, (min-width: 768px) 40vw, 72vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -162,8 +205,7 @@ function FeaturedSection({ cakes }: { cakes: CatalogCake[] }) {
   );
 }
 
-function CustomPromoSection({ images }: { images: string[] }) {
-  const slides = images.length > 0 ? images : [];
+function CustomPromoSection({ slides }: { slides: HomePromoSlide[] }) {
   return (
     <section className="bg-[var(--color-brand-pink-soft)] py-12 md:py-16">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-2 md:px-8">
@@ -172,27 +214,27 @@ function CustomPromoSection({ images }: { images: string[] }) {
             got a vision? we&apos;ll bake it.
           </h2>
           <p className="mt-4 font-sans text-lg leading-relaxed text-[var(--color-ink-soft)]">
-            share a reference photo, tell us the vibe, and we&apos;ll shape the
-            layers, colors, and finish with you. optional upload on the order
-            form helps us get closer on the first call.
+            share a reference image, your size, your flavor. we&apos;ll call within 2 hours to confirm
+            and walk you through the details. no payment until you say yes.
           </p>
           <Link
             href="/order"
             className="mt-8 inline-flex rounded-full bg-[var(--color-brand-pink)] px-8 py-3.5 font-sans text-xs font-bold uppercase tracking-wider text-white shadow-[0_10px_28px_-6px_rgba(233,30,99,0.35)] transition-[transform,filter] hover:brightness-105 active:scale-[0.98]"
           >
-            start your custom order
+            order custom cake
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          {slides.map((src, i) => (
+          {slides.map((slide, i) => (
             <div
-              key={`${src}-${i}`}
-              className="relative aspect-square overflow-hidden rounded-2xl shadow-[var(--shadow-ambient-pink)]"
+              key={`${slide.src}-${i}`}
+              className="relative aspect-[3/4] overflow-hidden rounded-2xl border-4 border-white shadow-[var(--shadow-ambient-pink)]"
             >
               <Image
-                src={src}
-                alt="custom cake inspiration collage"
+                src={slide.src}
+                alt={slide.alt}
                 fill
+                priority={i < 2}
                 sizes="(min-width: 768px) 20vw, 42vw"
                 className="object-cover"
               />
@@ -210,23 +252,23 @@ function CustomPromoSection({ images }: { images: string[] }) {
 function WhySection() {
   const cards = [
     {
-      title: "5,000+ happy customers",
-      body: "birthdays, weddings, and midnight cravings. we have been part of the table for years.",
+      title: "5,000+ celebrations",
+      body: "birthdays, weddings, anniversaries, and we have baked for ranchi's biggest moments for years.",
     },
     {
-      title: "4 outlets in ranchi",
-      body: "pick up near you or ask about delivery when we confirm your order on the phone.",
+      title: "we make our own",
+      body: "our BIT Mesra production unit bakes everything fresh daily. no resellers, no shortcuts.",
     },
     {
-      title: "baked fresh daily",
-      body: "small batches, real cream, and frosting that does not feel mass made.",
+      title: "pure veg options",
+      body: "eggless versions across our cakes. fully vegetarian where it matters.",
     },
   ];
   return (
     <section className="py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <h2 className="text-center font-serif text-3xl font-semibold text-[var(--color-ink)]">
-          why baker&apos;s fresh
+          why ranchi loves us
         </h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {cards.map((c) => (
@@ -252,13 +294,18 @@ function LocationsPreview({ outlets }: { outlets: SiteOutlet[] }) {
   return (
     <section className="bg-[color-mix(in_srgb,var(--color-cream-soft)_50%,white)] py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="mb-8 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-          <h2 className="font-serif text-3xl font-semibold text-[var(--color-ink)]">
-            visit our outlets
-          </h2>
+        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="font-serif text-3xl font-semibold text-[var(--color-ink)]">
+              find us in ranchi
+            </h2>
+            <p className="mt-2 max-w-lg font-sans text-sm leading-relaxed text-[var(--color-ink-soft)]">
+              four outlets across the city. main retail at lalpur, production unit at BIT mesra.
+            </p>
+          </div>
           <Link
             href="/locations"
-            className="text-sm font-semibold text-[var(--color-brand-pink)] hover:underline"
+            className="shrink-0 text-sm font-semibold text-[var(--color-brand-pink)] hover:underline"
           >
             full map &amp; hours
           </Link>
@@ -279,7 +326,7 @@ function LocationsPreview({ outlets }: { outlets: SiteOutlet[] }) {
                 href={`tel:${o.phone.replace(/\s/g, "")}`}
                 className="mt-4 inline-block font-sans text-sm font-semibold text-[var(--color-brand-pink)] hover:underline"
               >
-                call {o.phone.replace("+91", "+91 ")}
+                call {formatIndiaPhone(o.phone)}
               </a>
             </div>
           ))}
@@ -295,7 +342,7 @@ function TestimonialsSection({ testimonials }: { testimonials: SiteTestimonial[]
     <section className="py-12 md:py-16">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <h2 className="text-center font-serif text-3xl font-semibold text-[var(--color-ink)]">
-          kind words from ranchi
+          kind words from our customers
         </h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
@@ -328,25 +375,26 @@ function BottomCta() {
     <section className="bg-[var(--color-brand-pink)] py-14 text-white md:py-20">
       <div className="mx-auto flex max-w-3xl flex-col items-center px-5 text-center md:px-8">
         <h2 className="font-serif text-3xl font-semibold md:text-4xl">
-          ready when you are
+          ready to make someone&apos;s day?
         </h2>
         <p className="mt-4 font-sans text-lg text-white/90">
-          tell us date, flavor, and mood. we&apos;ll call you within two hours to
-          lock details and payment.
+          tell us what you have in mind. we&apos;ll take it from there.
         </p>
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:justify-center">
           <Link
             href="/order"
             className="rounded-full bg-white px-10 py-3.5 font-sans text-xs font-bold uppercase tracking-wider text-[var(--color-brand-pink)] shadow-lg transition-[transform] hover:bg-[var(--color-cream-soft)] active:scale-[0.98]"
           >
             order custom cake
           </Link>
-          <Link
-            href="/cakes"
+          <a
+            href={siteWhatsappUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full border-2 border-white/80 px-10 py-3.5 font-sans text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-white/15"
           >
-            browse catalogue
-          </Link>
+            chat on whatsapp
+          </a>
         </div>
       </div>
     </section>
@@ -354,35 +402,37 @@ function BottomCta() {
 }
 
 export default async function HomePage() {
-  const [featured, catalog, outlets, testimonials] = await Promise.all([
-    getFeaturedCakes(8),
-    getCatalogCakes(),
-    getSiteOutlets(),
-    getFeaturedTestimonials(3),
-  ]);
+  const [featured, catalog, outlets, testimonials, promoSlides] =
+    await Promise.all([
+      getFeaturedCakes(8),
+      getCatalogCakes(),
+      getSiteOutlets(),
+      getFeaturedTestimonials(3),
+      getHomePromoCakes(),
+    ]);
 
   const displayFeaturedRaw =
     featured.length >= 4 ? featured.slice(0, 4) : catalog.slice(0, 4);
   const displayFeatured =
     displayFeaturedRaw.length > 0 ? displayFeaturedRaw : STITCH_FALLBACK_FEATURED;
 
-  /** First two cards use Stitch photography; names, prices, and links stay from the catalog. */
-  const homeFeatured: CatalogCake[] = displayFeatured.map((cake, i) =>
-    i < STITCH_HOME_SPOTLIGHT_IMAGES.length
-      ? { ...cake, image: STITCH_HOME_SPOTLIGHT_IMAGES[i]! }
-      : cake,
-  );
-
-  const promoImages = dedupeUrls([
-    ...STITCH_HOME_SPOTLIGHT_IMAGES,
-    ...displayFeatured.map((c) => c.image).filter(Boolean),
-  ]).slice(0, 4);
+  /** First four cards use `public/4cake/` photography and matching names or blurbs; catalog keeps prices and order links. */
+  const homeFeatured: CatalogCake[] = displayFeatured.map((cake, i) => {
+    const slot = HOME_MOST_LOVED_SLOTS[i];
+    if (!slot) return cake;
+    return {
+      ...cake,
+      image: slot.image,
+      name: slot.name,
+      description: slot.description,
+    };
+  });
 
   return (
     <>
       <HeroSection />
       <FeaturedSection cakes={homeFeatured} />
-      <CustomPromoSection images={promoImages} />
+      <CustomPromoSection slides={promoSlides} />
       <WhySection />
       <LocationsPreview outlets={outlets} />
       <TestimonialsSection testimonials={testimonials} />

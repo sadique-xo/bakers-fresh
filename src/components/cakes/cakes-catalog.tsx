@@ -19,29 +19,28 @@ import {
 
 import { cn } from "@/lib/utils";
 
+/** Catalog filter tabs */
 type TabId =
   | "all"
-  | "birthday"
-  | "kids"
-  | "anniversary"
-  | "wedding"
+  | "classic"
+  | "premium"
+  | "mithai"
+  | "cheesecakes"
   | "photo"
-  | "designer"
-  | "pastries"
-  | "eggless";
+  | "kids"
+  | "wedding";
 
 type SortId = "featured" | "price-asc" | "price-desc";
 
 const TABS: { id: TabId; label: string }[] = [
   { id: "all", label: "all" },
-  { id: "birthday", label: "birthday" },
+  { id: "classic", label: "classic" },
+  { id: "premium", label: "premium" },
+  { id: "mithai", label: "mithai" },
+  { id: "cheesecakes", label: "cheesecakes" },
+  { id: "photo", label: "photo cakes" },
   { id: "kids", label: "kids" },
-  { id: "anniversary", label: "anniversary" },
   { id: "wedding", label: "wedding" },
-  { id: "photo", label: "photo cake" },
-  { id: "designer", label: "designer" },
-  { id: "pastries", label: "pastries" },
-  { id: "eggless", label: "eggless" },
 ];
 
 const SORT_OPTIONS: { id: SortId; label: string }[] = [
@@ -50,13 +49,45 @@ const SORT_OPTIONS: { id: SortId; label: string }[] = [
   { id: "price-desc", label: "price, high to low" },
 ];
 
+const PREMIUM_SLUGS = new Set(["midnight-truffle", "belgian-chocolate-anniversary"]);
+
 function matchesTab(cake: CatalogCake, tab: TabId): boolean {
   if (tab === "all") return true;
-  if (tab === "eggless") return cake.eggless;
-  const slug = cake.categorySlug;
-  if (!slug) return false;
-  const expected = tab === "photo" ? "photo-cake" : tab;
-  return slug === expected;
+
+  const slug = cake.slug.toLowerCase();
+  const haystack = `${slug} ${cake.name} ${cake.description}`.toLowerCase();
+
+  switch (tab) {
+    case "classic": {
+      if (PREMIUM_SLUGS.has(slug)) return false;
+      if (
+        cake.categorySlug === "photo-cake" ||
+        cake.categorySlug === "kids" ||
+        cake.categorySlug === "designer" ||
+        cake.categorySlug === "wedding"
+      )
+        return false;
+      return cake.categorySlug === "birthday" || cake.categorySlug === "anniversary";
+    }
+    case "premium":
+      return (
+        PREMIUM_SLUGS.has(slug) ||
+        cake.categorySlug === "designer" ||
+        /\bpremium\b|tiered|tier\b|designer/i.test(haystack)
+      );
+    case "mithai":
+      return /\bgulab|jamun|rasmalai|kesar|pista|mithai\b/i.test(haystack);
+    case "cheesecakes":
+      return /cheesecake|\bcheese\s*cake\b/i.test(haystack);
+    case "photo":
+      return cake.categorySlug === "photo-cake";
+    case "kids":
+      return cake.categorySlug === "kids";
+    case "wedding":
+      return cake.categorySlug === "wedding";
+    default:
+      return false;
+  }
 }
 
 function filterByTab(list: CatalogCake[], tab: TabId): CatalogCake[] {
@@ -101,17 +132,7 @@ export function CakesCatalog({ cakes }: CatalogProps) {
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const tabCounts = useMemo(() => {
-    const counts: Record<TabId, number> = {
-      all: 0,
-      birthday: 0,
-      kids: 0,
-      anniversary: 0,
-      wedding: 0,
-      photo: 0,
-      designer: 0,
-      pastries: 0,
-      eggless: 0,
-    };
+    const counts = {} as Record<TabId, number>;
     for (const t of TABS) {
       counts[t.id] = cakes.filter((c) => matchesTab(c, t.id)).length;
     }
@@ -173,8 +194,7 @@ export function CakesCatalog({ cakes }: CatalogProps) {
           </Sheet>
         </div>
         <p className="mt-3 max-w-xl font-sans text-base leading-relaxed text-[var(--color-ink-soft)] md:text-[1.05rem]">
-          real work from our kitchen, organised so you can browse fast. prices are starting points,
-          final quote on call.
+          made fresh, customized for you. from classic flavours to mithai fusion.
         </p>
 
         <div className="relative mt-6 md:max-w-md">
@@ -238,12 +258,12 @@ export function CakesCatalog({ cakes }: CatalogProps) {
 
         {visible.length === 0 ? (
           <p className="rounded-2xl border border-[var(--color-border-soft)] bg-white/70 py-14 text-center font-sans text-[var(--color-ink-soft)]">
-            no cakes here yet for this filter. try &ldquo;all&rdquo;, another tab, or clear search.
+            no cakes in this category yet. take a look at our other collections.
           </p>
         ) : (
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {visible.map((cake) => (
-              <CakeCard key={cake.slug} cake={cake} />
+            {visible.map((cake, i) => (
+              <CakeCard key={cake.slug} cake={cake} imagePriority={i < 4} />
             ))}
           </div>
         )}

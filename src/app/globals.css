@@ -5,7 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: #fff8f7;
+  /* Warm bakery buttercream (@ref ~#f9f9e0): site canvas + hero */
+  --color-buttercream: #f9f9ea;
+  --color-background: var(--background);
   --color-foreground: #28171a;
 
   --color-brand-pink: #e91e63;
@@ -14,6 +16,8 @@
 
   --color-cream: #fff8f7;
   --color-cream-soft: #fff0f1;
+
+  --color-navbar-line: rgb(218 216 204 / 0.65);
 
   --color-ink: #28171a;
   --color-ink-soft: #5b3f43;
@@ -106,7 +110,8 @@ h6 {
 }
 
 :root {
-  --background: #fff8f7;
+  /* page canvas: same as --color-buttercream / hero */
+  --background: #f9f9ea;
   --foreground: #28171a;
   --card: #ffffff;
   --card-foreground: #28171a;
@@ -130,7 +135,7 @@ h6 {
   --chart-4: #5b3f43;
   --chart-5: #900038;
   --radius: 1rem;
-  --sidebar: #fff8f7;
+  --sidebar: #f9f9ea;
   --sidebar-foreground: #28171a;
   --sidebar-primary: #e91e63;
   --sidebar-primary-foreground: #ffffff;

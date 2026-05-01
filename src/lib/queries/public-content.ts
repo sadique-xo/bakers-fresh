@@ -7,7 +7,35 @@ import {
   mapTestimonialRow,
   type CakeWithCategory,
 } from "@/lib/catalog";
+import { HOME_PROMO_CAKE_SLUGS } from "@/lib/home-promo-cakes";
 import { createSupabaseServer } from "@/lib/supabase/server";
+
+export type HomePromoSlide = { src: string; alt: string };
+
+export const getHomePromoCakes = cache(async (): Promise<HomePromoSlide[]> => {
+  const slugs = [...HOME_PROMO_CAKE_SLUGS];
+  const supabase = await createSupabaseServer();
+  const { data, error } = await supabase
+    .from("cakes")
+    .select("*, categories(slug)")
+    .eq("is_active", true)
+    .in("slug", slugs);
+
+  if (error) {
+    console.error("getHomePromoCakes", error.message);
+    return [];
+  }
+
+  const rows = (data as CakeWithCategory[]).map(mapCakeRow).filter((c) => c.image);
+  const bySlug = new Map(rows.map((c) => [c.slug, c]));
+
+  const ordered: HomePromoSlide[] = [];
+  for (const slug of slugs) {
+    const cake = bySlug.get(slug);
+    if (cake) ordered.push({ src: cake.image, alt: `${cake.name}, custom cake reference` });
+  }
+  return ordered;
+});
 
 export const getCatalogCakes = cache(async (): Promise<CatalogCake[]> => {
   const supabase = await createSupabaseServer();

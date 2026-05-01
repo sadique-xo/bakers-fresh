@@ -9,9 +9,11 @@ import { cn } from "@/lib/utils";
 type Props = {
   cake: CatalogCake;
   className?: string;
+  /** First screenful on /cakes: eager-load for LCP. */
+  imagePriority?: boolean;
 };
 
-export function CakeCard({ cake, className }: Props) {
+export function CakeCard({ cake, className, imagePriority }: Props) {
   return (
     <article
       className={cn(
@@ -31,6 +33,7 @@ export function CakeCard({ cake, className }: Props) {
             src={cake.image}
             alt={cake.name}
             fill
+            priority={imagePriority}
             sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 100vw"
             className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
           />

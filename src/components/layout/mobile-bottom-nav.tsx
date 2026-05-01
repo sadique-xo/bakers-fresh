@@ -19,7 +19,7 @@ export function MobileBottomNav() {
   return (
     <nav
       aria-label="main"
-      className="border-t border-rose-50/90 bg-[color-mix(in_srgb,var(--color-cream)_95%,transparent)] px-4 py-3 shadow-[0_-10px_30px_-10px_rgba(233,30,99,0.15)] backdrop-blur-lg md:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-around rounded-t-[32px] pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+      className="border-t border-[var(--color-navbar-line)] bg-[color-mix(in_srgb,var(--color-buttercream)_92%,white)] px-4 py-3 shadow-[0_-10px_30px_-12px_rgba(40,23,26,0.08)] backdrop-blur-lg md:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-around rounded-t-[32px] pb-[max(0.75rem,env(safe-area-inset-bottom))]"
     >
       {items.map(({ href, label, Icon }) => {
         const active =
