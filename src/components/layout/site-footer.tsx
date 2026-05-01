@@ -115,7 +115,7 @@ export function SiteFooter({ outlets }: FooterProps) {
           </h2>
           <div className="flex flex-wrap gap-3">
             <a
-              href="https://instagram.com/"
+              href="https://www.instagram.com/bakers.fresh/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white hover:border-[var(--color-brand-pink)] hover:text-[var(--color-brand-pink)] transition-colors"
@@ -124,7 +124,7 @@ export function SiteFooter({ outlets }: FooterProps) {
               <Instagram className="size-5" />
             </a>
             <a
-              href="https://facebook.com/"
+              href="https://www.facebook.com/bakerybakersfresh/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white hover:border-[var(--color-brand-pink)] hover:text-[var(--color-brand-pink)] transition-colors"
@@ -133,7 +133,7 @@ export function SiteFooter({ outlets }: FooterProps) {
               <Facebook className="size-5" />
             </a>
             <a
-              href="https://youtube.com/"
+              href="https://www.youtube.com/@BakersFresh"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex size-11 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white hover:border-[var(--color-brand-pink)] hover:text-[var(--color-brand-pink)] transition-colors"

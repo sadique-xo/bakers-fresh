@@ -149,7 +149,7 @@ function FeaturedSection({ cakes }: { cakes: CatalogCake[] }) {
             <ArrowRight className="size-4" aria-hidden />
           </Link>
         </div>
-        <div className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 lg:grid-cols-4">
+        <div className="hide-scrollbar -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pt-2 pb-2 md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 md:pt-0 lg:grid-cols-4">
           {cakes.map((cake, index) => (
             <article
               key={cake.slug}
@@ -161,10 +161,10 @@ function FeaturedSection({ cakes }: { cakes: CatalogCake[] }) {
                   alt={cake.name}
                   priority={index < 2}
                   sizes="(min-width: 1024px) 22vw, (min-width: 768px) 40vw, min(100vw - 2.75rem, 18rem)"
-                  className="h-full w-full object-contain object-center transition-transform duration-500 sm:object-cover md:group-hover:scale-105"
+                  className="h-full w-full object-cover object-top transition-transform duration-500 md:group-hover:scale-105"
                 />
                 {cake.bestseller ? (
-                  <span className="absolute left-3 top-3 rounded-full bg-[var(--color-cream-soft)] px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-[var(--color-ink-soft)]">
+                  <span className="pointer-events-none absolute left-5 top-5 z-10 rounded-full bg-[var(--color-cream-soft)] px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-[var(--color-ink-soft)] shadow-sm">
                     bestseller
                   </span>
                 ) : null}
@@ -227,7 +227,7 @@ function CustomPromoSection({ slides }: { slides: HomePromoSlide[] }) {
                 alt={slide.alt}
                 priority={i < 2}
                 sizes="(min-width: 768px) 22vw, 46vw"
-                className="h-full w-full object-contain object-center sm:object-cover"
+                className="h-full w-full object-cover object-top"
               />
               {i === 1 ? (
                 <div className="absolute inset-0 bg-[var(--color-brand-pink)]/10" />
@@ -335,7 +335,7 @@ function TestimonialsSection({ testimonials }: { testimonials: SiteTestimonial[]
         <h2 className="text-center font-serif text-3xl font-semibold text-[var(--color-ink)]">
           kind words from our customers
         </h2>
-        <div className="mt-10 overflow-x-clip pb-2 md:overflow-visible md:pb-0">
+        <div className="mt-10 max-md:px-3 max-md:pb-8 max-md:pt-2">
           <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <blockquote

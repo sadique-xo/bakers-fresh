@@ -1,6 +1,7 @@
 import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { TopRouteProgress } from "@/components/layout/top-route-progress";
 import { GoogleAnalytics } from "@/components/seo/google-analytics";
 import { LocalBusinessJsonLd } from "@/components/seo/local-business-jsonld";
 import { getSiteOutlets } from "@/lib/queries/public-content";
@@ -14,6 +15,7 @@ export default async function SiteLayout({
     <>
       <LocalBusinessJsonLd />
       <GoogleAnalytics />
+      <TopRouteProgress />
       <SiteHeader />
       <main className="flex flex-1 flex-col pt-[4.25rem] pb-24 md:pb-0 md:pt-20">
         {children}

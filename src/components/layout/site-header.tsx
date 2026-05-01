@@ -183,11 +183,19 @@ export function SiteHeader() {
           aria-modal
           aria-label="site menu"
           className={cn(
-            "absolute left-0 top-0 flex h-full min-h-[100dvh] w-[min(22rem,92vw)] flex-col bg-[color-mix(in_srgb,var(--color-buttercream)_96%,white)] rounded-r-[2rem] py-24 pl-7 pr-6 pb-10 shadow-[8px_0_40px_-8px_rgba(40,23,26,0.12)] backdrop-blur-lg transition-transform duration-300 ease-out",
+            "absolute left-0 top-0 flex h-full min-h-[100dvh] w-[min(22rem,92vw)] flex-col bg-[color-mix(in_srgb,var(--color-buttercream)_96%,white)] rounded-r-[2rem] pb-10 pl-7 pr-6 pt-[max(1.5rem,env(safe-area-inset-top)+0.5rem)] shadow-[8px_0_40px_-8px_rgba(40,23,26,0.12)] backdrop-blur-lg transition-transform duration-300 ease-out",
             open ? "translate-x-0" : "-translate-x-full",
           )}
         >
-          <div className="mb-8">
+          <div className="mb-8 flex items-center gap-3">
+            <button
+              type="button"
+              className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-navbar-line)] bg-white/80 text-[var(--color-ink)] shadow-sm backdrop-blur-sm transition-colors hover:bg-white"
+              aria-label="close menu"
+              onClick={() => setOpen(false)}
+            >
+              <X className="size-5" strokeWidth={2} aria-hidden />
+            </button>
             <p className="font-[family-name:var(--font-handwritten)] text-2xl text-[var(--color-brand-pink-deep)]">
               menu
             </p>
