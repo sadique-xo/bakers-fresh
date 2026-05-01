@@ -10,7 +10,12 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
-        pathname: "/aida-public/**",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "content3.jdmagicbox.com",
+        pathname: "/**",
       },
       {
         protocol: "https",

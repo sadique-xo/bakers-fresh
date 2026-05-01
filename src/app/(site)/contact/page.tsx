@@ -29,7 +29,7 @@ export default async function ContactPage() {
           say hello
         </h1>
         <p className="mt-4 font-sans text-base text-[var(--color-ink-soft)] leading-relaxed md:text-lg">
-          call for same day possibilities, whatsapp references, or email slower
+          call for same day possibilities, whatsapp references, or slower
           questions. we read everything even if replies take an evening shift.
         </p>
         <ul className="mt-10 space-y-6 font-sans">
@@ -74,23 +74,13 @@ export default async function ContactPage() {
               </span>
             </a>
           </li>
-          <li className="text-[var(--color-ink-soft)]">
-            email (coming soon) — for now whatsapp photos work great.
-          </li>
         </ul>
       </section>
 
       <section className="mt-14 md:mt-0">
-        <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)]">
-          tiny contact form later
-        </h2>
-        <p className="mt-3 font-sans text-[var(--color-ink-soft)]">
-          the full jot form will land with admin notifications in a later sprint.
-          order flow already captures the details we need.
-        </p>
         <Link
           href="/order"
-          className="mt-10 inline-flex min-h-11 w-full max-w-xs items-center justify-center rounded-full bg-[var(--color-brand-pink)] px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white shadow-[var(--shadow-ambient-pink-lg)] sm:w-auto sm:max-w-none sm:min-h-0 sm:px-8"
+          className="inline-flex min-h-11 w-full max-w-xs items-center justify-center rounded-full bg-[var(--color-brand-pink)] px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white shadow-[var(--shadow-ambient-pink-lg)] sm:w-auto sm:max-w-none sm:min-h-0 sm:px-8 md:mt-10"
         >
           jump to custom order
         </Link>

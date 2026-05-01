@@ -34,17 +34,18 @@ export default function AboutPage() {
         <div className="relative mt-10 grid grid-cols-2 gap-3 overflow-hidden rounded-2xl md:grid-cols-3">
           <div className="relative col-span-2 aspect-[21/14] md:col-span-2 md:row-span-2 md:aspect-auto md:min-h-[14rem]">
             <Image
-              src="https://placehold.co/1200x800/fce4ec/28171a/png?text=bakery%20warmth"
-              alt="bakery workspace placeholder until owner supplies photos"
+              src="https://lh3.googleusercontent.com/p/AF1QipMdqCShhD22WJ9vBDD6WHzzADKlQcKAecN95NFA=s1360-w1360-h1020-rw"
+              alt="baker&apos;s fresh lalpur counter, cake display and refrigerated cases"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover"
+              priority
             />
           </div>
           <div className="relative aspect-square md:min-h-[12rem]">
             <Image
-              src="https://placehold.co/600x600/fff0f1/e91e63/png?text=frosting"
-              alt="frosting detail placeholder"
+              src="https://content3.jdmagicbox.com/comp/ranchi/g3/0651px651.x651.220527162753.l9g3/catalogue/bakers-fresh-lalpur-ranchi-cake-shops-3r20t4x6dt.jpg"
+              alt="interior of baker&apos;s fresh lalpur, shelves and service counter"
               fill
               sizes="(min-width: 768px) 25vw, 50vw"
               className="object-cover"
@@ -52,8 +53,8 @@ export default function AboutPage() {
           </div>
           <div className="relative aspect-square md:col-start-3 md:min-h-[12rem]">
             <Image
-              src="https://placehold.co/600x600/ffdcbc/900038/png?text=team"
-              alt="team collage placeholder"
+              src="https://lh3.googleusercontent.com/p/AF1QipN5aAB8Hx50xfqYs0wii8sf4b8sCO6u8B-WVzQb=s1360-w1360-h1020-rw"
+              alt="baker&apos;s fresh outlet aisle with cakes in the display case"
               fill
               sizes="(min-width: 768px) 25vw, 50vw"
               className="object-cover"

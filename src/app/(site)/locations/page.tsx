@@ -51,10 +51,11 @@ export default async function LocationsPage() {
               key={o.slug}
               className="overflow-hidden rounded-2xl border border-[var(--color-border-soft)] bg-white shadow-[var(--shadow-ambient-pink)]"
             >
-              <div className="aspect-[21/10] bg-[var(--color-cream-soft)]">
+              {/* Padding-bottom preserves 21:10 on all widths; h-full iframe inside aspect-ratio breaks on mobile Safari */}
+              <div className="relative h-0 w-full overflow-hidden bg-[var(--color-cream-soft)] pb-[calc(100%*10/21)]">
                 <iframe
                   title={`map ${o.name}`}
-                  className="h-full w-full border-0"
+                  className="absolute inset-0 block size-full border-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   src={mapIframeSrc(o)}

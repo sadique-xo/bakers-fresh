@@ -17,7 +17,7 @@ export function CakeCard({ cake, className, imagePriority }: Props) {
   return (
     <article
       className={cn(
-        "group relative grid w-full min-w-0 max-w-full grid-cols-[8.25rem_minmax(0,1fr)] overflow-hidden rounded-[1.35rem] bg-white shadow-[var(--shadow-ambient-pink)] sm:flex sm:flex-col sm:rounded-[1.5rem]",
+        "relative grid w-full min-w-0 max-w-full grid-cols-[8.25rem_minmax(0,1fr)] overflow-hidden rounded-[1.35rem] bg-white shadow-[var(--shadow-ambient-pink)] sm:flex sm:flex-col sm:rounded-[1.5rem]",
         className,
       )}
     >
@@ -34,7 +34,7 @@ export function CakeCard({ cake, className, imagePriority }: Props) {
           alt={cake.name}
           priority={imagePriority}
           sizes="(min-width: 1280px) 280px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 8.25rem"
-          className="h-full w-full object-cover object-center transition-transform duration-700 ease-out md:group-hover:scale-105"
+          className="h-full w-full object-cover object-center"
         />
         {(cake.bestseller || cake.badge) && (
           <span
