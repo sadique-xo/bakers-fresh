@@ -1,4 +1,5 @@
 import type { Tables } from "@/lib/database.types";
+import { normalizeCakeMediaUrl } from "@/lib/media";
 
 export type CatalogCake = {
   slug: string;
@@ -40,7 +41,7 @@ export function mapCakeRow(row: CakeWithCategory): CatalogCake {
     name,
     description,
     priceFrom: row.base_price_inr,
-    image: row.image_url ?? "",
+    image: normalizeCakeMediaUrl(row.image_url),
     eggless: Boolean(row.is_eggless),
     bestseller: Boolean(row.is_featured),
     badge: undefined,

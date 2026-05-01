@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight, Cake, Star } from "lucide-react";
 
+import { CatalogCakeImage } from "@/components/cakes/catalog-cake-image";
+
 import type { CatalogCake, SiteOutlet, SiteTestimonial } from "@/lib/catalog";
 import {
   getCatalogCakes,
@@ -154,13 +156,12 @@ function FeaturedSection({ cakes }: { cakes: CatalogCake[] }) {
               className="group relative flex w-[min(100vw-2.5rem,18rem)] max-w-[18rem] min-w-0 shrink-0 snap-center flex-col overflow-hidden rounded-2xl bg-[var(--color-cream)] ambient-shadow md:w-auto md:max-w-none"
             >
               <div className="relative aspect-[3/4] w-full min-w-0 max-w-full overflow-hidden">
-                <Image
+                <CatalogCakeImage
                   src={cake.image}
                   alt={cake.name}
-                  fill
                   priority={index < 2}
-                  sizes="(min-width: 1024px) 22vw, (min-width: 768px) 40vw, 72vw"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(min-width: 1024px) 22vw, (min-width: 768px) 40vw, min(100vw - 2.75rem, 18rem)"
+                  className="h-full w-full object-contain object-center transition-transform duration-500 sm:object-cover md:group-hover:scale-105"
                 />
                 {cake.bestseller ? (
                   <span className="absolute left-3 top-3 rounded-full bg-[var(--color-cream-soft)] px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-[var(--color-ink-soft)]">
@@ -221,13 +222,12 @@ function CustomPromoSection({ slides }: { slides: HomePromoSlide[] }) {
               key={`${slide.src}-${i}`}
               className="relative aspect-[3/4] min-w-0 max-w-full overflow-hidden rounded-2xl border-4 border-white shadow-[var(--shadow-ambient-pink)]"
             >
-              <Image
+              <CatalogCakeImage
                 src={slide.src}
                 alt={slide.alt}
-                fill
                 priority={i < 2}
-                sizes="(min-width: 768px) 20vw, 42vw"
-                className="h-full w-full object-cover"
+                sizes="(min-width: 768px) 22vw, 46vw"
+                className="h-full w-full object-contain object-center sm:object-cover"
               />
               {i === 1 ? (
                 <div className="absolute inset-0 bg-[var(--color-brand-pink)]/10" />

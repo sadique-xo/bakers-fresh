@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Leaf, ShoppingCart } from "lucide-react";
 
+import { CatalogCakeImage } from "@/components/cakes/catalog-cake-image";
 import type { CatalogCake } from "@/lib/catalog";
 
 import { cn } from "@/lib/utils";
@@ -29,12 +29,11 @@ export function CakeCard({ cake, className, imagePriority }: Props) {
       ) : null}
 
         <div className="relative aspect-[3/4] w-full min-w-0 max-w-full overflow-hidden bg-[var(--color-cream-soft)] sm:aspect-square">
-          <Image
+          <CatalogCakeImage
             src={cake.image}
             alt={cake.name}
-            fill
             priority={imagePriority}
-            sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, min(100vw, 560px)"
+            sizes="(min-width: 1024px) 320px, (min-width: 640px) 45vw, calc(100vw - 2rem)"
             className="h-full w-full object-contain object-center transition-transform duration-700 ease-out sm:object-cover sm:object-center md:group-hover:scale-105"
           />
         {(cake.bestseller || cake.badge) && (

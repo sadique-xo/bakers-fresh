@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Caveat, Fraunces, Inter, Geist } from "next/font/google";
 
 import { AppToaster } from "@/components/providers/app-toaster";
@@ -32,6 +32,12 @@ const caveat = Caveat({
   variable: "--font-caveat",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),

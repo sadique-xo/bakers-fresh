@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
             {
               protocol: "https" as const,
               hostname: supabaseHost,
-              pathname: "/storage/v1/**",
+              pathname: "/storage/**",
             },
           ]
         : []),
