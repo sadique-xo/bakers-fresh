@@ -84,6 +84,7 @@ export function SiteHeader() {
               height={100}
               className="h-11 w-auto sm:h-12 md:h-[3.35rem] lg:h-16"
               priority
+              loading="eager"
             />
           </Link>
 

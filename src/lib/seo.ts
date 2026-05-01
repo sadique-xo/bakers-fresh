@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import { STITCH_HOME_HERO } from "@/lib/stitch-home-assets";
-
 /**
  * Production: set NEXT_PUBLIC_SITE_URL (e.g. https://bakers-fresh.sadique.co).
  * Vercel sets VERCEL_URL automatically as a fallback when the env is missing.
@@ -14,8 +12,9 @@ export function getSiteUrl(): string {
   return "http://localhost:3000";
 }
 
-/** Absolute URL for default share previews (Stitch hero). */
-export const defaultOgImageUrl = STITCH_HOME_HERO;
+/** Default Open Graph / Twitter card image in `/public` (1200×630). */
+export const defaultOgImageUrl =
+  "/" + encodeURIComponent("Social Image for Websites.webp");
 
 export const siteName = "baker's fresh";
 

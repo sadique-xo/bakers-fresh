@@ -52,7 +52,8 @@ export const metadata: Metadata = {
   authors: [{ name: siteName, url: getSiteUrl() }],
   creator: siteName,
   icons: {
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    icon: [{ url: "/site-icon-figma.png", type: "image/png" }],
+    apple: [{ url: "/site-icon-figma.png", type: "image/png" }],
   },
   openGraph: {
     type: "website",
