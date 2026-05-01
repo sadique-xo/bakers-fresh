@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 
 import { OrderForm } from "@/components/order/order-form";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "order custom cake",
   description:
-    "place a custom cake order. we upload references and confirm by phone within two hours.",
-};
+    "place a custom cake order online. upload references, pick date and slot, we call you within two hours to confirm.",
+  pathname: "/order",
+});
 
 type Props = {
   searchParams: Promise<{ cake?: string }>;

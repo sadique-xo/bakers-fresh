@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 
 import { OrderSuccessContent } from "@/components/order/order-success-content";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "order received",
-  description: "thank you for your custom cake order at baker's fresh.",
-};
+  description:
+    "thank you for your custom cake order at baker's fresh. we will call you soon to confirm.",
+  pathname: "/order/success",
+  index: false,
+});
 
 export default function OrderSuccessPage() {
   return (

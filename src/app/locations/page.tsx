@@ -3,11 +3,14 @@ import Link from "next/link";
 
 import type { SiteOutlet } from "@/lib/catalog";
 import { getSiteOutlets } from "@/lib/queries/public-content";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "locations",
-  description: "baker's fresh outlets across ranchi with hours and directions.",
-};
+  description:
+    "visit baker's fresh at lalpur, bit mesra, neori, and bariatu road. hours, maps, and phone.",
+  pathname: "/locations",
+});
 
 const mapsBase = "https://www.google.com/maps/search/?api=1&query=";
 

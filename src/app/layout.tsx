@@ -6,6 +6,12 @@ import { MobileBottomNav } from "@/components/layout/mobile-bottom-nav";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { getSiteOutlets } from "@/lib/queries/public-content";
+import {
+  defaultKeywords,
+  defaultOgImageUrl,
+  getSiteUrl,
+  siteName,
+} from "@/lib/seo";
 
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -32,14 +38,40 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: "baker's fresh | custom cakes ranchi",
     template: "%s | baker's fresh",
   },
   description:
     "handcrafted custom cakes and bakes in ranchi. order online, we call you back within 2 hours.",
+  applicationName: siteName,
+  keywords: defaultKeywords,
+  authors: [{ name: siteName, url: getSiteUrl() }],
+  creator: siteName,
   icons: {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName,
+    images: [
+      {
+        url: defaultOgImageUrl,
+        width: 1200,
+        height: 630,
+        alt: "custom celebration cake — baker's fresh ranchi",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
   },
 };
 

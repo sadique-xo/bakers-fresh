@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight, Cake, Star } from "lucide-react";
 
 import type { CatalogCake, SiteOutlet, SiteTestimonial } from "@/lib/catalog";
@@ -9,11 +10,14 @@ import {
   getFeaturedTestimonials,
   getSiteOutlets,
 } from "@/lib/queries/public-content";
+import { buildHomeMetadata } from "@/lib/seo";
 import {
   STITCH_FALLBACK_FEATURED,
   STITCH_HOME_HERO,
   STITCH_HOME_SPOTLIGHT_IMAGES,
 } from "@/lib/stitch-home-assets";
+
+export const metadata: Metadata = buildHomeMetadata();
 
 function dedupeUrls(urls: string[]): string[] {
   const seen = new Set<string>();

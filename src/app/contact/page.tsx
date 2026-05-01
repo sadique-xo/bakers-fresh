@@ -4,11 +4,14 @@ import { MessageCircle, Phone } from "lucide-react";
 
 import { getSiteOutlets } from "@/lib/queries/public-content";
 import { sitePhoneDisplay, sitePhoneTel, siteWhatsappUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "contact",
-  description: "call, whatsapp, or write to baker's fresh in ranchi.",
-};
+  description:
+    "call, whatsapp, or message baker's fresh in ranchi. four outlets, one friendly team.",
+  pathname: "/contact",
+});
 
 export default async function ContactPage() {
   const outlets = await getSiteOutlets();

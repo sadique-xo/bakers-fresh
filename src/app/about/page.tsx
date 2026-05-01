@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata: Metadata = {
+import { buildPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildPageMetadata({
   title: "about",
-  description: "story, values, and the people behind baker's fresh in ranchi.",
-};
+  description:
+    "story, values, and the team behind baker's fresh in ranchi. four outlets, thousands of celebrations.",
+  pathname: "/about",
+});
 
 export default function AboutPage() {
   return (
