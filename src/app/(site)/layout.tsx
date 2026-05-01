@@ -15,7 +15,7 @@ export default async function SiteLayout({
       <LocalBusinessJsonLd />
       <GoogleAnalytics />
       <SiteHeader />
-      <main className="flex flex-1 flex-col pt-16 pb-24 md:pb-0 md:pt-[4.5rem]">
+      <main className="flex flex-1 flex-col pt-[4.25rem] pb-24 md:pb-0 md:pt-20">
         {children}
       </main>
       <SiteFooter outlets={outlets} />

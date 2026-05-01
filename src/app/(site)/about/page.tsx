@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata({
   title: "about",
   description:
-    "story, values, and the team behind baker's fresh in ranchi. four outlets, thousands of celebrations.",
+    "story, values, and the team behind baker's fresh in ranchi. two counters, thousands of celebrations.",
   pathname: "/about",
 });
 
@@ -22,17 +22,14 @@ export default function AboutPage() {
         </h1>
         <p className="mt-6 font-sans text-lg text-[var(--color-ink-soft)] leading-relaxed">
           baker&apos;s fresh now serves north of five thousand celebrations a
-          year across four outlets. we still frost by hand and taste every new
-          batch before it hits the shelf.
+          year across our ranchi counters. we still frost by hand and taste every
+          new batch before it hits the shelf.
         </p>
         <p className="mt-5 font-sans text-lg text-[var(--color-ink-soft)] leading-relaxed">
           monika guides the brand as founder, a ranchi entrepreneur with a
-          background in business management. our{" "}
-          <span className="font-medium text-[var(--color-ink)]">
-            BIT Mesra production unit
-          </span>{" "}
-          bakes everything in-house, fresh daily, so you are never getting a
-          pass-through cake from a mystery kitchen.
+          background in business management. we bake everything in-house, fresh
+          daily, so you are never getting a pass-through cake from a mystery
+          kitchen.
         </p>
         <div className="relative mt-10 grid grid-cols-2 gap-3 overflow-hidden rounded-2xl md:grid-cols-3">
           <div className="relative col-span-2 aspect-[21/14] md:col-span-2 md:row-span-2 md:aspect-auto md:min-h-[14rem]">

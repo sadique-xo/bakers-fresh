@@ -254,8 +254,8 @@ INSERT INTO categories (slug, name, description, display_order) VALUES
   ('eggless', 'Eggless Cakes', 'Pure vegetarian, equally delicious', 7),
   ('pastries', 'Pastries', 'Single-serve treats, freshly made daily', 8);
 
--- Locations (the 4 real Baker's Fresh outlets)
-INSERT INTO locations (slug, name, is_main, address, phone, whatsapp, google_maps_url, hours, display_order) VALUES
+-- Locations (retail counters shown on site)
+INSERT INTO locations (slug, name, is_main, address, phone, whatsapp, google_maps_url, google_maps_embed, hours, display_order) VALUES
   (
     'lalpur',
     'Lalpur',
@@ -264,19 +264,9 @@ INSERT INTO locations (slug, name, is_main, address, phone, whatsapp, google_map
     '+919934627281',
     '+917004502102',
     'https://maps.google.com/?q=Bakers+Fresh+Lalpur+Ranchi',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.4792561764725!2d85.3388291!3d23.370873499999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1982f6b1111%3A0x2a1e050f2eaf2269!2sBAKER%27S%20FRESH!5e0!3m2!1sen!2sin!4v1777659097931!5m2!1sen!2sin',
     '{"monday":"8:00 AM - 10:00 PM","tuesday":"8:00 AM - 10:00 PM","wednesday":"8:00 AM - 10:00 PM","thursday":"8:00 AM - 10:00 PM","friday":"8:00 AM - 10:00 PM","saturday":"8:00 AM - 10:00 PM","sunday":"8:00 AM - 10:00 PM"}'::jsonb,
     1
-  ),
-  (
-    'bit-mesra',
-    'BIT Mesra',
-    false,
-    'BIT Mesra Campus, Mesra, Ranchi 835215',
-    '+917004502102',
-    '+917004502102',
-    'https://maps.google.com/?q=Bakers+Fresh+BIT+Mesra',
-    '{"monday":"9:00 AM - 9:30 PM","tuesday":"9:00 AM - 9:30 PM","wednesday":"9:00 AM - 9:30 PM","thursday":"9:00 AM - 9:30 PM","friday":"9:00 AM - 9:30 PM","saturday":"9:00 AM - 9:30 PM","sunday":"9:00 AM - 9:30 PM"}'::jsonb,
-    2
   ),
   (
     'neori',
@@ -286,20 +276,13 @@ INSERT INTO locations (slug, name, is_main, address, phone, whatsapp, google_map
     '+917004502102',
     '+917004502102',
     'https://maps.google.com/?q=Bakers+Fresh+Neori+Ranchi',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.537306000757!2d85.42457437603075!3d23.44107570057988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e5cec711cc83%3A0xf8eb81b6a7a421d6!2sBakers%20Fresh%20Neori!5e0!3m2!1sen!2sin!4v1777659116316!5m2!1sen!2sin',
     '{"monday":"9:00 AM - 9:30 PM","tuesday":"9:00 AM - 9:30 PM","wednesday":"9:00 AM - 9:30 PM","thursday":"9:00 AM - 9:30 PM","friday":"9:00 AM - 9:30 PM","saturday":"9:00 AM - 9:30 PM","sunday":"9:00 AM - 9:30 PM"}'::jsonb,
-    3
-  ),
-  (
-    'bariatu',
-    'Bariatu Road',
-    false,
-    'Opposite Shree Kaushal Tower, Bariatu Road, Ranchi',
-    '+917004502102',
-    '+917004502102',
-    'https://maps.google.com/?q=Bakers+Fresh+Bariatu+Ranchi',
-    '{"monday":"9:00 AM - 10:30 PM","tuesday":"9:00 AM - 10:30 PM","wednesday":"9:00 AM - 10:30 PM","thursday":"9:00 AM - 10:30 PM","friday":"9:00 AM - 10:30 PM","saturday":"9:00 AM - 10:30 PM","sunday":"9:00 AM - 10:30 PM"}'::jsonb,
-    4
+    2
   );
+
+-- If you applied an older seed with extra outlets, remove discontinued rows:
+-- DELETE FROM locations WHERE slug IN ('bit-mesra', 'bariatu');
 
 -- Demo cakes (replace with real cakes when client provides photos)
 INSERT INTO cakes (slug, category_id, name, description, image_url, base_price_inr, flavors, sizes_available, is_eggless, is_featured, display_order) VALUES

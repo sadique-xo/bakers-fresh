@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -36,9 +37,15 @@ export function SiteFooter({ outlets }: FooterProps) {
     <footer className="border-t-4 border-double border-[var(--color-border-soft)] bg-stone-50 pt-14 pb-8 text-[var(--color-ink-soft)]">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 pb-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-10 lg:px-8">
         <div className="space-y-4">
-          <p className="font-serif text-2xl italic font-bold text-[var(--color-brand-pink)]">
-            baker&apos;s fresh
-          </p>
+          <Link href="/" className="inline-flex">
+            <Image
+              src="/bakers-fresh-pink-logo.webp"
+              alt="baker&apos;s fresh"
+              width={360}
+              height={100}
+              className="h-14 w-auto sm:h-16 md:h-[4.25rem]"
+            />
+          </Link>
           <p className="font-sans text-sm leading-relaxed">
             custom cakes and bakes across ranchi since day one we&apos;ve cared
             about fresh ingredients and a warm counter chat.

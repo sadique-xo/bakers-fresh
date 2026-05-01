@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -58,7 +59,7 @@ export function SiteHeader() {
             : "bg-[color-mix(in_srgb,var(--color-buttercream)_78%,transparent)] backdrop-blur-md",
         )}
       >
-        <div className="relative mx-auto flex h-16 max-w-7xl items-center gap-3 px-5 md:h-[4.25rem] md:gap-6 md:px-8">
+        <div className="relative mx-auto flex min-h-[4.25rem] max-w-7xl items-center gap-3 px-5 py-1 md:min-h-20 md:gap-6 md:px-8 md:py-0">
           <button
             type="button"
             className="relative z-[2] shrink-0 rounded-xl border border-[var(--color-navbar-line)] bg-white/50 p-2 text-[var(--color-ink)] transition-colors hover:bg-white/85 md:hidden"
@@ -72,9 +73,18 @@ export function SiteHeader() {
 
           <Link
             href="/"
-            className="absolute left-1/2 z-[2] inline-flex max-w-[11rem] -translate-x-1/2 font-black italic tracking-tight text-[var(--color-brand-pink-deep)] md:relative md:left-auto md:translate-x-0 md:max-w-none md:text-lg lg:text-[1.35rem]"
+            className={cn(
+              "absolute left-1/2 z-[2] flex max-w-[15rem] -translate-x-1/2 items-center justify-center md:relative md:left-auto md:translate-x-0 md:max-w-none",
+            )}
           >
-            baker&apos;s fresh
+            <Image
+              src="/bakers-fresh-pink-logo.webp"
+              alt="baker&apos;s fresh"
+              width={360}
+              height={100}
+              className="h-11 w-auto sm:h-12 md:h-[3.35rem] lg:h-16"
+              priority
+            />
           </Link>
 
           <nav
@@ -127,9 +137,6 @@ export function SiteHeader() {
             >
               <Phone className="size-[18px] shrink-0 text-[var(--color-brand-pink)]" aria-hidden />
               <span className="hidden whitespace-nowrap lg:inline">{sitePhoneDisplay}</span>
-              <span className="hidden text-xs font-bold uppercase tracking-wider text-[var(--color-ink-soft)] xl:inline">
-                call
-              </span>
             </a>
             <Link
               href="/order"

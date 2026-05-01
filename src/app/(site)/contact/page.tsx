@@ -15,7 +15,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildPageMetadata({
   title: "contact",
   description:
-    "call, whatsapp, or message baker's fresh in ranchi. four outlets, one friendly team.",
+    "call, whatsapp, or message baker's fresh in ranchi. lalpur, neori, one friendly team.",
   pathname: "/contact",
 });
 
@@ -35,7 +35,7 @@ export default async function ContactPage() {
         <ul className="mt-10 space-y-6 font-sans">
           <li>
             <p className="text-xs font-medium uppercase tracking-wider text-[var(--color-ink-subtle)]">
-              main reservations &amp; custom orders (bit mesra, neori, bariatu)
+              neori outlet &amp; custom orders
             </p>
             <a
               href={sitePhoneTel}

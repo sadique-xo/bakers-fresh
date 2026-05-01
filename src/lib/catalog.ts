@@ -49,11 +49,14 @@ export function mapCakeRow(row: CakeWithCategory): CatalogCake {
 }
 
 export function mapLocationRow(row: Tables<"locations">): SiteOutlet {
+  const name = String(row.name ?? "").trim();
+  const address = String(row.address ?? "").trim();
+  const phone = String(row.phone ?? "").trim();
   return {
     slug: row.slug,
-    name: row.name.trim().toLowerCase(),
-    shortAddress: row.address.trim().toLowerCase(),
-    phone: row.phone,
+    name: name.toLowerCase(),
+    shortAddress: address.toLowerCase(),
+    phone,
     googleMapsEmbed: row.google_maps_embed,
     hoursNote: formatHoursHint(row.hours),
   };

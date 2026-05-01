@@ -24,16 +24,7 @@ export const metadata: Metadata = buildHomeMetadata();
 
 function HeroSection() {
   return (
-    <section className="relative isolate w-full overflow-hidden bg-[var(--color-buttercream)]">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.4] [background-image:radial-gradient(circle_at_1px_1px,rgba(168,216,199,0.16)_1px,transparent_0)] [background-size:21px_21px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_18%_-8%,rgba(233,30,99,0.06),transparent_52%),radial-gradient(ellipse_65%_50%_at_98%_18%,rgba(252,228,236,0.5),transparent_58%)]"
-      />
-
+    <section className="relative w-full overflow-hidden bg-[var(--color-buttercream)]">
       <div className="relative z-10 mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-14 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.08fr)] lg:items-center lg:gap-x-14 lg:gap-y-12 lg:py-[4.5rem]">
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           <span className="mb-4 inline-flex items-center rounded-full border border-[var(--color-navbar-line)] bg-white/55 px-4 py-1.5 shadow-sm backdrop-blur-sm">
@@ -73,7 +64,7 @@ function HeroSection() {
             </li>
             <li>
               <span className="inline-flex items-center rounded-full border border-[var(--color-navbar-line)] bg-white/70 px-2 py-0.5 font-sans text-[9px] font-semibold uppercase tracking-[0.08em] text-[var(--color-ink-soft)] shadow-sm backdrop-blur-sm md:px-2.5 md:py-1 md:text-[10px] md:tracking-[0.07em]">
-                4 outlets in ranchi
+                2 ranchi counters
               </span>
             </li>
             <li>
@@ -257,7 +248,7 @@ function WhySection() {
     },
     {
       title: "we make our own",
-      body: "our BIT Mesra production unit bakes everything fresh daily. no resellers, no shortcuts.",
+      body: "everything bakes fresh in our ranchi kitchen daily. no resellers, no shortcuts.",
     },
     {
       title: "pure veg options",
@@ -300,7 +291,7 @@ function LocationsPreview({ outlets }: { outlets: SiteOutlet[] }) {
               find us in ranchi
             </h2>
             <p className="mt-2 max-w-lg font-sans text-sm leading-relaxed text-[var(--color-ink-soft)]">
-              four outlets across the city. main retail at lalpur, production unit at BIT mesra.
+              lalpur for the flagship counter and neori for the second stop. tap through for maps and hours.
             </p>
           </div>
           <Link
@@ -310,7 +301,7 @@ function LocationsPreview({ outlets }: { outlets: SiteOutlet[] }) {
             full map &amp; hours
           </Link>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           {outlets.map((o) => (
             <div
               key={o.slug}

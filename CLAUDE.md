@@ -2,7 +2,7 @@
 
 ## What we're building
 
-A custom cake order website for Baker's Fresh, an established bakery in Ranchi with 4 outlets. The owner is the same person as Cuku Cafe (existing client).
+A custom cake order website for Baker's Fresh, an established bakery in Ranchi. The site lists **two retail counters**: Lalpur (main) and Neori. The owner is the same person as Cuku Cafe (existing client).
 
 Customers browse cakes, fill a custom cake order form with a reference image upload, and the owner calls them within 2 hours to confirm details and take payment manually. No payment gateway in V1.
 
@@ -56,15 +56,15 @@ Aesthetic: playful modern, warm bakery feel, premium not generic. Mobile-first (
 
 Sticky nav with backdrop blur on scroll. Logo left, nav links center, "Order Custom Cake" pink CTA right. Phone number with call icon (icon only on mobile, full number on desktop). Mobile uses shadcn Sheet for hamburger menu.
 
-Footer: 4-column grid on desktop, stacked on mobile. Columns: Brand (logo + tagline + WhatsApp icon), Quick Links, Outlets (4 with phone), Social. Bottom row: copyright + mandatory `built by sadique.co` link.
+Footer: 4-column grid on desktop, stacked on mobile. Columns: Brand (logo + tagline + WhatsApp icon), Quick Links, Outlets (from DB, phones per row), Social. Bottom row: copyright + mandatory `built by sadique.co` link.
 
 ### 2. Home `/`
 
 - **Hero** — 2-column desktop, stacked mobile (image first). Left: Caveat tag "fresh from our oven", Fraunces 2-line headline, Inter sub-text, two CTAs (Order Custom Cake primary, View Our Cakes secondary). Right: hero cake image in rounded-3xl frame with floating accent badges. Background: cream with two soft pink gradient blobs.
 - **Featured Cakes** — horizontal scroll mobile, 4-col grid desktop. 4-6 cakes from Supabase. "Browse all cakes" CTA.
 - **Custom Cake Promo** — full-width, brand-pink-soft bg. Two columns: text + CTA, collage of reference images. Headline: "got a vision? we'll bake it."
-- **Why Baker's Fresh** — 3 cards (5,000+ customers / 4 outlets / fresh daily).
-- **Locations Preview** — 4 outlet cards with name, address, click-to-call.
+- **Why Baker's Fresh** — 3 cards (5,000+ customers / baked fresh daily / pure veg options).
+- **Locations Preview** — outlet cards (name, address, click-to-call) from Supabase.
 - **Testimonials** — 3 cards with star rating, slight rotate (-1deg, 1deg) for handmade feel.
 - **Bottom CTA** — big pink section with 2 buttons.
 
@@ -95,21 +95,18 @@ Confetti animation on load (Magic MCP for this). Big "thank you!" Fraunces headi
 
 ### 6. Locations `/locations`
 
-Page heading "visit our outlets". 4 outlet cards in 2x2 grid (stacked mobile). Each card: name (Fraunces), address, phone (click-to-call), embedded Google Maps iframe, hours. The 4 outlets:
-- **Lalpur** (main): Bimal Shopping Complex, Lalpur, near Central Bank, opposite Amravati Complex, Ranchi 834001
-- **BIT Mesra**: BIT Mesra Campus, Mesra, Ranchi 835215
-- **Neori**: Vikas, Pahan Complex, Neori, Ranchi
-- **Bariatu Road**: Opposite Shree Kaushal Tower, Bariatu Road, Ranchi
+Page heading "visit our outlets". Outlet cards in a responsive grid from Supabase. Each card: name (Fraunces), address, phone (click-to-call), embedded Google Maps iframe, hours. **On site:** Lalpur (main) and Neori only.
 
-Phone for all: +91 70045 02102
+- **Lalpur** (main): Bimal Shopping Complex, Lalpur, near Central Bank, opposite Amravati Complex, Ranchi 834001 — +91 99346 27281
+- **Neori**: Vikas, Pahan Complex, Neori, Ranchi — +91 70045 02102
 
 ### 7. About `/about`
 
-Hero with bakery story (5,000+ customers, 4 outlets, founded year TBD from owner). Photo collage of team and bakery (placeholder for V1). "Our values" section: 3 cards (fresh ingredients, traditional methods, made with love).
+Hero with bakery story (5,000+ customers, two counters on the site, founded year TBD from owner). Photo collage of team and bakery (placeholder for V1). "Our values" section: 3 cards (fresh ingredients, traditional methods, made with love).
 
 ### 8. Contact `/contact`
 
-Two columns: contact info (phone, WhatsApp, email, social), simple contact form (name, phone, message). Below: 4 location cards (mini version). Bottom: big WhatsApp CTA "chat with us on WhatsApp" (green button).
+Two columns: contact info (phone, WhatsApp, email, social), simple contact form (name, phone, message). Below: mini outlet list from DB. Bottom: big WhatsApp CTA "chat with us on WhatsApp" (green button).
 
 ## Supabase schema
 

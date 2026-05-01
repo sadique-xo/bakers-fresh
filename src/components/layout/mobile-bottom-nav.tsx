@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Cake, ClipboardEdit, Home, MapPin } from "lucide-react";
+import { Cake, ClipboardEdit, Home, MessageCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -10,7 +10,7 @@ const items = [
   { href: "/", label: "home", Icon: Home },
   { href: "/cakes", label: "cakes", Icon: Cake },
   { href: "/order", label: "order", Icon: ClipboardEdit },
-  { href: "/locations", label: "outlets", Icon: MapPin },
+  { href: "/contact", label: "contact", Icon: MessageCircle },
 ] as const;
 
 export function MobileBottomNav() {

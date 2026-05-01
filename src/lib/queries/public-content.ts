@@ -9,6 +9,7 @@ import {
 } from "@/lib/catalog";
 import { HOME_PROMO_CAKE_SLUGS } from "@/lib/home-promo-cakes";
 import { createSupabaseServer } from "@/lib/supabase/server";
+import type { Tables } from "@/lib/database.types";
 
 export type HomePromoSlide = { src: string; alt: string };
 
@@ -83,7 +84,15 @@ export const getSiteOutlets = cache(async (): Promise<SiteOutlet[]> => {
     console.error("getSiteOutlets", error.message);
     return [];
   }
-  return (data ?? []).map(mapLocationRow);
+  return (data ?? [])
+    .map((row) => {
+      try {
+        return mapLocationRow(row as Tables<"locations">);
+      } catch {
+        return null;
+      }
+    })
+    .filter((o): o is SiteOutlet => Boolean(o?.slug?.trim()));
 });
 
 export const getFeaturedTestimonials = cache(
