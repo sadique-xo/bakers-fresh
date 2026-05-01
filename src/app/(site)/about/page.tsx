@@ -12,20 +12,20 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-4xl px-5 py-12 md:px-8 md:py-16">
-      <section className="rounded-3xl border border-[var(--color-border-soft)] bg-white p-8 shadow-[var(--shadow-ambient-pink)] md:p-12">
-        <p className="font-[family-name:var(--font-handwritten)] text-2xl text-[var(--color-brand-pink)]">
+    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-5 md:px-8 md:py-16">
+      <section className="rounded-3xl border border-[var(--color-border-soft)] bg-white p-6 shadow-[var(--shadow-ambient-pink)] sm:p-8 md:p-12">
+        <p className="font-[family-name:var(--font-handwritten)] text-xl text-[var(--color-brand-pink)] sm:text-2xl">
           our corner of ranchi
         </p>
-        <h1 className="mt-4 font-serif text-4xl font-semibold text-[var(--color-ink)] md:text-[2.65rem]">
+        <h1 className="mt-4 font-serif text-[1.625rem] font-semibold leading-snug text-[var(--color-ink)] sm:text-3xl md:text-[2.65rem] md:leading-tight">
           started as a tiny kitchen line, grew with every birthday whispered at the counter.
         </h1>
-        <p className="mt-6 font-sans text-lg text-[var(--color-ink-soft)] leading-relaxed">
+        <p className="mt-6 font-sans text-base text-[var(--color-ink-soft)] leading-relaxed sm:text-lg">
           baker&apos;s fresh now serves north of five thousand celebrations a
           year across our ranchi counters. we still frost by hand and taste every
           new batch before it hits the shelf.
         </p>
-        <p className="mt-5 font-sans text-lg text-[var(--color-ink-soft)] leading-relaxed">
+        <p className="mt-5 font-sans text-base text-[var(--color-ink-soft)] leading-relaxed sm:text-lg">
           monika guides the brand as founder, a ranchi entrepreneur with a
           background in business management. we bake everything in-house, fresh
           daily, so you are never getting a pass-through cake from a mystery
@@ -83,7 +83,7 @@ export default function AboutPage() {
           ].map((v) => (
             <div
               key={v.title}
-              className="rounded-2xl bg-[color-mix(in_srgb,var(--color-cream-soft)_70%,white)] p-6"
+              className="rounded-2xl bg-[color-mix(in_srgb,var(--color-cream-soft)_70%,white)] p-5 sm:p-6"
             >
               <h3 className="font-serif text-xl font-semibold text-[var(--color-ink)]">
                 {v.title}

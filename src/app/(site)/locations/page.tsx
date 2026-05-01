@@ -24,11 +24,11 @@ export default async function LocationsPage() {
   const outlets = await getSiteOutlets();
 
   return (
-    <div className="mx-auto max-w-7xl px-5 py-12 md:px-8 md:py-16">
-      <h1 className="font-serif text-4xl font-semibold text-[var(--color-ink)]">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-5 md:px-8 md:py-16">
+      <h1 className="font-serif text-[1.875rem] font-semibold leading-tight text-[var(--color-ink)] md:text-4xl">
         visit our outlets
       </h1>
-      <p className="mt-3 max-w-2xl font-sans text-lg text-[var(--color-ink-soft)] leading-relaxed">
+      <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-[var(--color-ink-soft)] md:text-lg">
         two counters in ranchi, same warmth at the counter and the same cake line
         up.
       </p>
@@ -60,8 +60,8 @@ export default async function LocationsPage() {
                   src={mapIframeSrc(o)}
                 />
               </div>
-              <div className="p-6">
-                <h2 className="font-serif text-2xl font-semibold capitalize text-[var(--color-ink)]">
+              <div className="p-5 sm:p-6">
+                <h2 className="font-serif text-xl font-semibold capitalize text-[var(--color-ink)] sm:text-2xl">
                   {o.name}
                 </h2>
                 <p className="mt-2 font-sans text-[var(--color-ink-soft)] leading-relaxed">
@@ -70,10 +70,10 @@ export default async function LocationsPage() {
                 <p className="mt-2 font-sans text-sm text-[var(--color-ink-subtle)]">
                   {o.hoursNote ?? "hours vary on festivals, call ahead if unsure"}
                 </p>
-                <div className="mt-6 flex flex-wrap gap-4">
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                   <a
                     href={`tel:${o.phone.replace(/\s/g, "")}`}
-                    className="inline-flex rounded-full bg-[var(--color-brand-pink)] px-5 py-2.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[var(--color-brand-pink)] px-5 py-2.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white sm:w-auto sm:min-h-0"
                   >
                     call outlet
                   </a>
@@ -81,7 +81,7 @@ export default async function LocationsPage() {
                     href={`${mapsBase}${encodeURIComponent(o.shortAddress)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex rounded-full border border-[var(--color-border-soft)] px-5 py-2.5 font-sans text-[11px] font-bold uppercase tracking-wider text-[var(--color-brand-pink-deep)]"
+                    className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[var(--color-border-soft)] px-5 py-2.5 font-sans text-[11px] font-bold uppercase tracking-wider text-[var(--color-brand-pink-deep)] sm:w-auto sm:min-h-0"
                   >
                     open in maps
                   </Link>

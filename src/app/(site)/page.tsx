@@ -32,7 +32,7 @@ function HeroSection() {
               fresh from our oven
             </span>
           </span>
-          <h1 className="max-w-xl font-serif text-4xl font-bold leading-[1.06] tracking-tight text-[var(--color-ink)] md:text-5xl lg:text-[3.35rem]">
+          <h1 className="max-w-xl font-serif text-[clamp(1.875rem,5.4vw,2.25rem)] font-bold leading-[1.06] tracking-tight text-[var(--color-ink)] sm:text-4xl md:text-5xl lg:text-[3.35rem]">
             bite into pure joy.
           </h1>
           <p className="mt-5 max-w-[28rem] font-sans text-base leading-relaxed text-[var(--color-ink-soft)] md:text-lg">
@@ -90,8 +90,8 @@ function HeroSection() {
               sizes="(min-width: 1024px) 36rem, 100vw"
               className="object-cover object-center"
             />
-            <div className="pointer-events-none absolute bottom-4 right-4 rotate-[-4deg] rounded-full bg-[color-mix(in_srgb,white_82%,transparent)] px-4 py-2.5 backdrop-blur-md">
-              <span className="font-[family-name:var(--font-handwritten)] text-xl text-[var(--color-brand-pink-deep)] md:text-[1.35rem]">
+            <div className="pointer-events-none absolute bottom-3 right-3 max-w-[min(11rem,calc(100%-1.5rem))] rotate-[-4deg] rounded-full bg-[color-mix(in_srgb,white_82%,transparent)] px-3 py-2 backdrop-blur-md sm:bottom-4 sm:right-4 sm:max-w-none sm:px-4 sm:py-2.5">
+              <span className="font-[family-name:var(--font-handwritten)] text-[1rem] leading-tight text-[var(--color-brand-pink-deep)] sm:text-xl md:text-[1.35rem]">
                 fresh out the oven!
               </span>
             </div>
@@ -151,16 +151,16 @@ function FeaturedSection({ cakes }: { cakes: CatalogCake[] }) {
           {cakes.map((cake, index) => (
             <article
               key={cake.slug}
-              className="group relative flex w-[min(100%,18rem)] shrink-0 snap-center flex-col overflow-hidden rounded-2xl bg-[var(--color-cream)] ambient-shadow md:w-auto"
+              className="group relative flex w-[min(100vw-2.5rem,18rem)] max-w-[18rem] min-w-0 shrink-0 snap-center flex-col overflow-hidden rounded-2xl bg-[var(--color-cream)] ambient-shadow md:w-auto md:max-w-none"
             >
-              <div className="relative aspect-[3/4] w-full overflow-hidden">
+              <div className="relative aspect-[3/4] w-full min-w-0 max-w-full overflow-hidden">
                 <Image
                   src={cake.image}
                   alt={cake.name}
                   fill
                   priority={index < 2}
                   sizes="(min-width: 1024px) 22vw, (min-width: 768px) 40vw, 72vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {cake.bestseller ? (
                   <span className="absolute left-3 top-3 rounded-full bg-[var(--color-cream-soft)] px-3 py-1 font-sans text-[10px] font-bold uppercase tracking-wider text-[var(--color-ink-soft)]">
@@ -168,20 +168,20 @@ function FeaturedSection({ cakes }: { cakes: CatalogCake[] }) {
                   </span>
                 ) : null}
               </div>
-              <div className="flex flex-1 flex-col p-4">
-                <h3 className="font-serif text-xl font-semibold text-[var(--color-ink)]">
+              <div className="flex min-w-0 flex-1 flex-col p-4">
+                <h3 className="min-w-0 break-words font-serif text-lg font-semibold leading-snug text-[var(--color-ink)] sm:text-xl">
                   {cake.name}
                 </h3>
-                <p className="mt-1 flex-1 font-sans text-sm leading-snug text-[var(--color-ink-soft)]">
+                <p className="mt-1 line-clamp-3 flex-1 font-sans text-sm leading-snug text-[var(--color-ink-soft)]">
                   {cake.description}
                 </p>
-                <div className="mt-4 flex items-center justify-between">
-                  <span className="font-sans text-lg font-bold text-[var(--color-brand-pink)]">
+                <div className="mt-4 flex min-w-0 items-center justify-between gap-3">
+                  <span className="shrink-0 font-sans text-base font-bold text-[var(--color-brand-pink)] sm:text-lg">
                     from ₹{cake.priceFrom}
                   </span>
                   <Link
                     href={`/order?cake=${cake.slug}`}
-                    className="rounded-full bg-[#e2165f] p-2.5 text-white transition-transform active:scale-90"
+                    className="inline-flex shrink-0 min-h-11 min-w-11 touch-manipulation items-center justify-center rounded-full bg-[#e2165f] p-2.5 text-white transition-transform active:scale-90 sm:min-h-0 sm:min-w-0"
                     aria-label={`order ${cake.name}`}
                   >
                     <ArrowRight className="size-4 rotate-[-45deg]" aria-hidden />
@@ -215,11 +215,11 @@ function CustomPromoSection({ slides }: { slides: HomePromoSlide[] }) {
             order custom cake
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        <div className="grid min-w-0 grid-cols-2 gap-3 sm:gap-4">
           {slides.map((slide, i) => (
             <div
               key={`${slide.src}-${i}`}
-              className="relative aspect-[3/4] overflow-hidden rounded-2xl border-4 border-white shadow-[var(--shadow-ambient-pink)]"
+              className="relative aspect-[3/4] min-w-0 max-w-full overflow-hidden rounded-2xl border-4 border-white shadow-[var(--shadow-ambient-pink)]"
             >
               <Image
                 src={slide.src}
@@ -227,7 +227,7 @@ function CustomPromoSection({ slides }: { slides: HomePromoSlide[] }) {
                 fill
                 priority={i < 2}
                 sizes="(min-width: 768px) 20vw, 42vw"
-                className="object-cover"
+                className="h-full w-full object-cover"
               />
               {i === 1 ? (
                 <div className="absolute inset-0 bg-[var(--color-brand-pink)]/10" />
@@ -265,7 +265,7 @@ function WhySection() {
           {cards.map((c) => (
             <div
               key={c.title}
-              className="rounded-2xl border border-[var(--color-border-soft)] bg-white/80 p-6 shadow-[var(--shadow-ambient-pink)]"
+              className="rounded-2xl border border-[var(--color-border-soft)] bg-white/80 p-5 shadow-[var(--shadow-ambient-pink)] sm:p-6"
             >
               <h3 className="font-serif text-xl font-semibold text-[var(--color-ink)]">
                 {c.title}
@@ -305,7 +305,7 @@ function LocationsPreview({ outlets }: { outlets: SiteOutlet[] }) {
           {outlets.map((o) => (
             <div
               key={o.slug}
-              className="rounded-2xl border border-[var(--color-border-soft)] bg-[var(--color-cream)] p-5 shadow-sm"
+              className="rounded-2xl border border-[var(--color-border-soft)] bg-[var(--color-cream)] p-5 shadow-sm sm:p-6"
             >
               <h3 className="font-serif text-lg font-semibold capitalize text-[var(--color-ink)]">
                 {o.name}
@@ -335,11 +335,12 @@ function TestimonialsSection({ testimonials }: { testimonials: SiteTestimonial[]
         <h2 className="text-center font-serif text-3xl font-semibold text-[var(--color-ink)]">
           kind words from our customers
         </h2>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 overflow-x-clip pb-2 md:overflow-visible md:pb-0">
+          <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <blockquote
               key={`${t.author}-${i}`}
-              className="rounded-2xl border border-[var(--color-border-soft)] bg-white p-6 shadow-[var(--shadow-ambient-pink)]"
+              className="rounded-2xl border border-[var(--color-border-soft)] bg-white p-5 shadow-[var(--shadow-ambient-pink)] sm:p-6"
               style={{ transform: `rotate(${t.rotate})` }}
             >
               <div className="flex gap-0.5 text-[var(--color-gold)]" aria-label={`${t.rating} stars`}>
@@ -355,6 +356,7 @@ function TestimonialsSection({ testimonials }: { testimonials: SiteTestimonial[]
               </footer>
             </blockquote>
           ))}
+          </div>
         </div>
       </div>
     </section>
@@ -371,10 +373,10 @@ function BottomCta() {
         <p className="mt-4 font-sans text-lg text-white/90">
           tell us what you have in mind. we&apos;ll take it from there.
         </p>
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:justify-center">
+        <div className="mt-10 flex w-full max-w-lg flex-col gap-4 px-4 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center sm:px-0">
           <Link
             href="/order"
-            className="rounded-full bg-white px-10 py-3.5 font-sans text-xs font-bold uppercase tracking-wider text-[var(--color-brand-pink)] shadow-lg transition-[transform] hover:bg-[var(--color-cream-soft)] active:scale-[0.98]"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-white px-8 py-3.5 font-sans text-xs font-bold uppercase tracking-wider text-[var(--color-brand-pink)] shadow-lg transition-[transform] hover:bg-[var(--color-cream-soft)] active:scale-[0.98] sm:w-auto sm:px-10"
           >
             order custom cake
           </Link>
@@ -382,7 +384,7 @@ function BottomCta() {
             href={siteWhatsappUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border-2 border-white/80 px-10 py-3.5 font-sans text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-white/15"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-full border-2 border-white/80 px-8 py-3.5 font-sans text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-white/15 sm:w-auto sm:px-10"
           >
             chat on whatsapp
           </a>

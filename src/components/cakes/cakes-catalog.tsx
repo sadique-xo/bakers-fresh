@@ -147,9 +147,9 @@ export function CakesCatalog({ cakes }: CatalogProps) {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-5 pt-10 md:px-8 md:pt-12 lg:px-10">
-        <div className="flex items-end justify-between gap-6">
-          <h1 className="font-serif text-4xl font-semibold tracking-tight text-[var(--color-ink)] md:text-5xl">
+      <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-5 md:px-8 md:pt-12 lg:px-10">
+        <div className="flex items-start justify-between gap-3 sm:gap-6">
+          <h1 className="min-w-0 flex-1 font-serif text-[1.875rem] font-semibold leading-tight tracking-tight text-[var(--color-ink)] sm:text-4xl md:text-5xl">
             our cakes
           </h1>
           <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
@@ -160,19 +160,22 @@ export function CakesCatalog({ cakes }: CatalogProps) {
               aria-label="sort and filters">
               <SlidersHorizontal className="size-[22px] text-[var(--color-ink-soft)]" />
             </SheetTrigger>
-            <SheetContent side="bottom" className="max-h-[88vh] rounded-t-2xl">
+            <SheetContent
+              side="bottom"
+              className="max-h-[88vh] rounded-t-2xl pb-[max(1.25rem,env(safe-area-inset-bottom))]"
+            >
               <SheetHeader>
                 <SheetTitle className="text-left font-serif text-xl font-semibold normal-case text-[var(--color-ink)]">
                   sort
                 </SheetTitle>
               </SheetHeader>
-              <div className="space-y-4 px-4 pb-6">
+              <div className="space-y-4 px-4 pb-6 [&_label]:min-w-0 [&_label]:leading-snug">
                 <RadioGroup
                   className="grid gap-3"
                   value={sort}
                   onValueChange={(v) => setSort(v as SortId)}>
                   {SORT_OPTIONS.map((opt) => (
-                    <div key={opt.id} className="flex items-center gap-3">
+                    <div key={opt.id} className="flex items-start gap-3">
                       <RadioGroupItem value={opt.id} id={`sort-${opt.id}`} />
                       <Label htmlFor={`sort-${opt.id}`} className="cursor-pointer font-normal">
                         {opt.label}
@@ -193,11 +196,11 @@ export function CakesCatalog({ cakes }: CatalogProps) {
             </SheetContent>
           </Sheet>
         </div>
-        <p className="mt-3 max-w-xl font-sans text-base leading-relaxed text-[var(--color-ink-soft)] md:text-[1.05rem]">
+        <p className="mt-3 max-w-xl font-sans text-sm leading-relaxed text-[var(--color-ink-soft)] sm:text-base md:text-[1.05rem]">
           made fresh, customized for you. from classic flavours to mithai fusion.
         </p>
 
-        <div className="relative mt-6 md:max-w-md">
+        <div className="relative mt-6 w-full max-w-full md:max-w-md">
           <Search
             className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
             aria-hidden
@@ -212,7 +215,7 @@ export function CakesCatalog({ cakes }: CatalogProps) {
           />
         </div>
 
-        <div className="hide-scrollbar mb-2 mt-8 flex gap-3 overflow-x-auto pb-1 md:mb-12 md:flex-wrap md:overflow-visible">
+        <div className="hide-scrollbar -mx-4 mb-6 mt-8 flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-4 pb-1 sm:-mx-5 sm:px-5 md:mx-0 md:mb-12 md:flex-wrap md:gap-3 md:overflow-visible md:px-0 md:snap-none">
           {TABS.map((t) => {
             const active = tab === t.id;
             const count = tabCounts[t.id];
@@ -222,7 +225,7 @@ export function CakesCatalog({ cakes }: CatalogProps) {
                 type="button"
                 onClick={() => setTab(t.id)}
                 className={cn(
-                  "flex-shrink-0 rounded-full px-5 py-2.5 font-sans text-[11px] font-bold uppercase tracking-wider transition-[transform,box-shadow,color,background]",
+                  "snap-start flex-shrink-0 rounded-full px-4 py-2 font-sans text-[10px] font-bold uppercase tracking-wider transition-[transform,box-shadow,color,background] min-[390px]:px-5 min-[390px]:py-2.5 min-[390px]:text-[11px]",
                   active
                     ? "bg-[var(--color-brand-pink)] text-white shadow-[var(--shadow-ambient-pink)]"
                     : "bg-[color-mix(in_srgb,var(--color-cream-soft)_92%,white)] text-[var(--color-ink)] shadow-sm hover:bg-[color-mix(in_srgb,var(--color-cream-soft)_100%,transparent)] active:scale-95",
@@ -261,7 +264,7 @@ export function CakesCatalog({ cakes }: CatalogProps) {
             no cakes in this category yet. take a look at our other collections.
           </p>
         ) : (
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 [&>*]:min-w-0">
             {visible.map((cake, i) => (
               <CakeCard key={cake.slug} cake={cake} imagePriority={i < 4} />
             ))}

@@ -87,9 +87,9 @@ export function SiteFooter({ outlets }: FooterProps) {
           </h2>
           <ul className="space-y-4 text-sm">
             {outlets.map((o) => (
-              <li key={o.slug} className="flex gap-2">
+              <li key={o.slug} className="flex min-w-0 gap-2">
                 <MapPinned className="mt-0.5 size-4 shrink-0 text-[var(--color-brand-pink)]" aria-hidden />
-                <span>
+                <span className="min-w-0">
                   <span className="font-medium text-[var(--color-ink)]">
                     {o.name}
                   </span>

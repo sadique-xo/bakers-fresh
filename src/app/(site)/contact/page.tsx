@@ -23,12 +23,12 @@ export default async function ContactPage() {
   const outlets = await getSiteOutlets();
 
   return (
-    <div className="mx-auto max-w-7xl px-5 py-12 md:grid md:grid-cols-2 md:gap-12 md:px-8 md:py-16">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-5 md:grid md:grid-cols-2 md:gap-12 md:px-8 md:py-16">
       <section>
-        <h1 className="font-serif text-4xl font-semibold text-[var(--color-ink)]">
+        <h1 className="font-serif text-[1.875rem] font-semibold leading-tight text-[var(--color-ink)] md:text-4xl">
           say hello
         </h1>
-        <p className="mt-4 font-sans text-lg text-[var(--color-ink-soft)] leading-relaxed">
+        <p className="mt-4 font-sans text-base text-[var(--color-ink-soft)] leading-relaxed md:text-lg">
           call for same day possibilities, whatsapp references, or email slower
           questions. we read everything even if replies take an evening shift.
         </p>
@@ -39,10 +39,12 @@ export default async function ContactPage() {
             </p>
             <a
               href={sitePhoneTel}
-              className="mt-1 inline-flex items-center gap-3 text-[var(--color-brand-pink)] hover:underline"
+              className="mt-1 inline-flex max-w-full min-w-0 items-start gap-3 text-[var(--color-brand-pink)] hover:underline"
             >
-              <Phone className="size-6 shrink-0" aria-hidden />
-              <span className="text-lg font-semibold text-[var(--color-ink)]">{sitePhoneDisplay}</span>
+              <Phone className="mt-0.5 size-6 shrink-0" aria-hidden />
+              <span className="min-w-0 break-words text-base font-semibold text-[var(--color-ink)] sm:text-lg">
+                {sitePhoneDisplay}
+              </span>
             </a>
           </li>
           <li>
@@ -51,10 +53,12 @@ export default async function ContactPage() {
             </p>
             <a
               href={sitePhoneLalpurTel()}
-              className="mt-1 inline-flex items-center gap-3 text-[var(--color-brand-pink)] hover:underline"
+              className="mt-1 inline-flex max-w-full min-w-0 items-start gap-3 text-[var(--color-brand-pink)] hover:underline"
             >
-              <Phone className="size-6 shrink-0" aria-hidden />
-              <span className="text-lg font-semibold text-[var(--color-ink)]">{sitePhoneLalpurDisplay}</span>
+              <Phone className="mt-0.5 size-6 shrink-0" aria-hidden />
+              <span className="min-w-0 break-words text-base font-semibold text-[var(--color-ink)] sm:text-lg">
+                {sitePhoneLalpurDisplay}
+              </span>
             </a>
           </li>
           <li>
@@ -86,12 +90,12 @@ export default async function ContactPage() {
         </p>
         <Link
           href="/order"
-          className="mt-10 inline-flex rounded-full bg-[var(--color-brand-pink)] px-8 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white shadow-[var(--shadow-ambient-pink-lg)]"
+          className="mt-10 inline-flex min-h-11 w-full max-w-xs items-center justify-center rounded-full bg-[var(--color-brand-pink)] px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white shadow-[var(--shadow-ambient-pink-lg)] sm:w-auto sm:max-w-none sm:min-h-0 sm:px-8"
         >
           jump to custom order
         </Link>
 
-        <div className="mt-14 rounded-2xl border border-[var(--color-border-soft)] bg-white p-6 shadow-sm">
+        <div className="mt-14 rounded-2xl border border-[var(--color-border-soft)] bg-white p-5 shadow-sm sm:p-6">
           <h3 className="font-serif text-lg font-semibold text-[var(--color-ink)]">
             quick outlets
           </h3>
@@ -109,15 +113,15 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      <div className="col-span-full mt-16 rounded-3xl bg-[#25d366]/15 px-6 py-10 text-center">
-        <p className="font-serif text-2xl text-[var(--color-ink)]">
+      <div className="col-span-full mx-[-0.25rem] mt-16 rounded-3xl bg-[#25d366]/15 px-4 py-8 text-center sm:mx-0 sm:px-6 sm:py-10">
+        <p className="font-serif text-xl leading-snug text-[var(--color-ink)] sm:text-2xl">
           prefer whatsapp typing over forms?
         </p>
         <a
           href={siteWhatsappUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex rounded-full bg-[#25d366] px-10 py-3.5 font-sans text-sm font-bold text-white hover:brightness-105"
+          className="mt-6 inline-flex min-h-11 w-full max-w-[min(100%,20rem)] items-center justify-center rounded-full bg-[#25d366] px-6 py-3.5 font-sans text-sm font-bold text-white hover:brightness-105 sm:w-auto sm:max-w-none sm:px-10"
         >
           chat with us on whatsapp
         </a>

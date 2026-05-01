@@ -77,7 +77,7 @@ export function OrderSuccessContent({ expectedOrderId }: OrderSuccessProps) {
 
   if (data === "loading") {
     return (
-      <div className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-12 text-center font-sans text-[var(--color-ink-soft)] shadow-[var(--shadow-ambient-pink)]">
+      <div className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-8 text-center font-sans text-[var(--color-ink-soft)] shadow-[var(--shadow-ambient-pink)] sm:p-12">
         loading…
       </div>
     );
@@ -85,7 +85,7 @@ export function OrderSuccessContent({ expectedOrderId }: OrderSuccessProps) {
 
   if (data === "missing") {
     return (
-      <div className="relative overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-8 shadow-[var(--shadow-ambient-pink)]">
+      <div className="relative overflow-hidden rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-5 shadow-[var(--shadow-ambient-pink)] sm:p-8">
         <p className="font-sans text-[var(--color-ink-soft)] leading-relaxed">
           if you refreshed or landed here directly, we don&apos;t have your order id in this tab anymore.
           no stress, call us or whatsapp and we&apos;ll find you in the queue.
@@ -93,14 +93,14 @@ export function OrderSuccessContent({ expectedOrderId }: OrderSuccessProps) {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/"
-            className="inline-flex justify-center rounded-full border border-[var(--color-border-soft)] bg-[var(--color-cream-soft)] px-8 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-[var(--color-ink)]">
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-[var(--color-cream-soft)] px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-[var(--color-ink)] sm:w-auto sm:min-h-0 sm:px-8">
             back to home
           </Link>
           <a
             href={siteWhatsappUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex justify-center rounded-full bg-[#25d366] px-8 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white">
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#25d366] px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white sm:w-auto sm:min-h-0 sm:px-8">
             chat on whatsapp
           </a>
         </div>
@@ -114,15 +114,15 @@ export function OrderSuccessContent({ expectedOrderId }: OrderSuccessProps) {
   return (
     <div className="relative">
       <ConfettiBurst />
-      <div className="relative rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-8 shadow-[var(--shadow-ambient-pink)] md:p-10">
+      <div className="relative rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-5 shadow-[var(--shadow-ambient-pink)] sm:p-8 md:p-10">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
           <p className="font-[family-name:var(--font-handwritten)] text-2xl text-[var(--color-brand-pink-deep)]">
             thank you!
           </p>
-          <h1 className="mt-2 font-serif text-3xl font-semibold text-[var(--color-ink)] md:text-4xl">
+          <h1 className="mt-2 font-serif text-[1.5rem] font-semibold leading-snug text-[var(--color-ink)] sm:text-3xl md:text-4xl">
             your request is in.
           </h1>
-          <p className="mt-6 font-mono text-2xl font-bold tracking-tight text-[var(--color-brand-pink)] md:text-3xl">
+          <p className="mt-6 break-all font-mono text-lg font-bold tracking-tight text-[var(--color-brand-pink)] sm:break-normal sm:text-2xl md:text-3xl">
             {data.orderNumber}
           </p>
           <p className="mt-4 font-sans text-[var(--color-ink-soft)] leading-relaxed">
@@ -132,7 +132,7 @@ export function OrderSuccessContent({ expectedOrderId }: OrderSuccessProps) {
           </p>
 
           {s ? (
-            <div className="mt-8 space-y-3 rounded-2xl bg-[var(--color-cream-soft)] p-6 font-sans text-sm text-[var(--color-ink-soft)]">
+            <div className="mt-8 space-y-3 rounded-2xl bg-[var(--color-cream-soft)] p-4 font-sans text-sm text-[var(--color-ink-soft)] sm:p-6">
               <p>
                 <span className="font-semibold text-[var(--color-ink)]">{s.customerName}</span>
                 {", "}
@@ -171,17 +171,17 @@ export function OrderSuccessContent({ expectedOrderId }: OrderSuccessProps) {
               href={siteWhatsappUrl(waText)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex justify-center rounded-full bg-[#25d366] px-8 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white shadow-sm hover:brightness-105">
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#25d366] px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white shadow-sm hover:brightness-105 sm:w-auto sm:min-h-0 sm:px-8">
               share on whatsapp
             </a>
             <Link
               href="/cakes"
-              className="inline-flex justify-center rounded-full bg-[var(--color-brand-pink)] px-8 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white shadow-[var(--shadow-ambient-pink-lg)]">
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[var(--color-brand-pink)] px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-white shadow-[var(--shadow-ambient-pink-lg)] sm:w-auto sm:min-h-0 sm:px-8">
               browse more cakes
             </Link>
             <Link
               href="/"
-              className="inline-flex justify-center rounded-full border border-[var(--color-border-soft)] bg-white px-8 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-[var(--color-ink)]">
+              className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white px-6 py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-[var(--color-ink)] sm:w-auto sm:min-h-0 sm:px-8">
               back to home
             </Link>
           </div>

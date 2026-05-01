@@ -17,7 +17,7 @@ export function CakeCard({ cake, className, imagePriority }: Props) {
   return (
     <article
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[var(--shadow-ambient-pink)]",
+        "group relative flex w-full min-w-0 max-w-full flex-col overflow-hidden rounded-[1.5rem] bg-white shadow-[var(--shadow-ambient-pink)]",
         className,
       )}
     >
@@ -28,14 +28,14 @@ export function CakeCard({ cake, className, imagePriority }: Props) {
         </div>
       ) : null}
 
-        <div className="relative aspect-square w-full overflow-hidden bg-[var(--color-cream-soft)]">
+        <div className="relative aspect-[3/4] w-full min-w-0 max-w-full overflow-hidden bg-[var(--color-cream-soft)] sm:aspect-square">
           <Image
             src={cake.image}
             alt={cake.name}
             fill
             priority={imagePriority}
-            sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 100vw"
-            className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+            sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, min(100vw, 560px)"
+            className="h-full w-full object-contain object-center transition-transform duration-700 ease-out sm:object-cover sm:object-center md:group-hover:scale-105"
           />
         {(cake.bestseller || cake.badge) && (
           <span
@@ -49,21 +49,21 @@ export function CakeCard({ cake, className, imagePriority }: Props) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 bg-[color-mix(in_srgb,white_88%,transparent)] p-5 backdrop-blur-md">
-        <div className="flex items-start justify-between gap-4">
-          <h2 className="font-serif text-xl font-semibold leading-tight text-[var(--color-ink)]">
+      <div className="flex min-w-0 flex-1 flex-col gap-3 bg-[color-mix(in_srgb,white_88%,transparent)] p-4 backdrop-blur-md sm:p-5">
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+          <h2 className="min-w-0 break-words font-serif text-lg font-semibold leading-snug text-[var(--color-ink)] sm:text-xl sm:leading-tight">
             {cake.name}
           </h2>
-          <span className="shrink-0 font-sans text-lg font-bold text-[var(--color-brand-pink)]">
+          <span className="shrink-0 font-sans text-base font-bold text-[var(--color-brand-pink)] sm:text-lg">
             from ₹{cake.priceFrom}
           </span>
         </div>
-        <p className="line-clamp-2 flex-1 font-sans text-sm leading-snug text-[var(--color-ink-soft)]">
+        <p className="line-clamp-2 min-w-0 flex-1 break-words font-sans text-sm leading-snug text-[var(--color-ink-soft)]">
           {cake.description}
         </p>
         <Link
           href={`/order?cake=${cake.slug}`}
-          className="group/btn mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-[var(--color-cream-soft)] py-3.5 font-sans text-[11px] font-bold uppercase tracking-wider text-[var(--color-brand-pink-deep)] transition-colors duration-300 hover:bg-[var(--color-brand-pink)] hover:text-white"
+          className="group/btn mt-1 flex min-h-11 w-full min-w-0 shrink-0 items-center justify-center gap-2 rounded-full bg-[var(--color-cream-soft)] px-3 py-3 font-sans text-[11px] font-bold uppercase tracking-wider text-[var(--color-brand-pink-deep)] transition-colors duration-300 hover:bg-[var(--color-brand-pink)] hover:text-white sm:mt-2 sm:px-4 sm:py-3.5"
         >
           <ShoppingCart
             className="size-[18px] transition-transform group-hover/btn:scale-110"

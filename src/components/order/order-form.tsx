@@ -316,8 +316,8 @@ export function OrderForm({ initialCakeSlug = null, className }: Props) {
         tell us everything, we&apos;ll call within two hours
       </p>
 
-      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-6 shadow-[var(--shadow-ambient-pink)] md:p-8">
-        <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)]">
+      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-5 shadow-[var(--shadow-ambient-pink)] sm:p-6 md:p-8">
+        <h2 className="font-serif text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">
           about the cake
         </h2>
 
@@ -448,8 +448,8 @@ export function OrderForm({ initialCakeSlug = null, className }: Props) {
         </div>
       </section>
 
-      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-6 shadow-[var(--shadow-ambient-pink)] md:p-8">
-        <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)]">
+      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-5 shadow-[var(--shadow-ambient-pink)] sm:p-6 md:p-8">
+        <h2 className="font-serif text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">
           inspiration
         </h2>
         <p className="mt-2 text-sm text-[var(--color-ink-soft)] leading-relaxed">
@@ -505,8 +505,8 @@ export function OrderForm({ initialCakeSlug = null, className }: Props) {
         ) : null}
       </section>
 
-      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-6 shadow-[var(--shadow-ambient-pink)] md:p-8">
-        <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)]">
+      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-5 shadow-[var(--shadow-ambient-pink)] sm:p-6 md:p-8">
+        <h2 className="font-serif text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">
           special instructions
         </h2>
         <Label htmlFor="specialInstructions" className="mt-4 font-sans text-[var(--color-ink-soft)]">
@@ -524,8 +524,8 @@ export function OrderForm({ initialCakeSlug = null, className }: Props) {
         ) : null}
       </section>
 
-      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-6 shadow-[var(--shadow-ambient-pink)] md:p-8">
-        <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)]">
+      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-5 shadow-[var(--shadow-ambient-pink)] sm:p-6 md:p-8">
+        <h2 className="font-serif text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">
           delivery details
         </h2>
 
@@ -615,7 +615,7 @@ export function OrderForm({ initialCakeSlug = null, className }: Props) {
               control={control}
               render={({ field }) => (
                 <RadioGroup
-                  className="flex flex-wrap gap-6"
+                  className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-3"
                   value={field.value}
                   onValueChange={field.onChange}>
                   {(
@@ -655,8 +655,8 @@ export function OrderForm({ initialCakeSlug = null, className }: Props) {
         </div>
       </section>
 
-      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-6 shadow-[var(--shadow-ambient-pink)] md:p-8">
-        <h2 className="font-serif text-2xl font-semibold text-[var(--color-ink)]">
+      <section className="rounded-[var(--radius-2xl)] border border-[var(--color-border-soft)] bg-white p-5 shadow-[var(--shadow-ambient-pink)] sm:p-6 md:p-8">
+        <h2 className="font-serif text-xl font-semibold text-[var(--color-ink)] sm:text-2xl">
           your details
         </h2>
 
@@ -712,7 +712,7 @@ export function OrderForm({ initialCakeSlug = null, className }: Props) {
           type="submit"
           disabled={isSubmitting}
           size="lg"
-          className="h-[52px] gap-2 rounded-full px-10 text-[11px] font-bold uppercase tracking-wider shadow-[var(--shadow-ambient-pink-lg)]">
+          className="min-h-[52px] w-full gap-2 rounded-full px-8 py-3 text-[11px] font-bold uppercase tracking-wider shadow-[var(--shadow-ambient-pink-lg)] sm:w-auto sm:min-h-[52px] sm:px-10">
           {isSubmitting ? (
             <>
               <Loader2 className="size-5 animate-spin" aria-hidden />

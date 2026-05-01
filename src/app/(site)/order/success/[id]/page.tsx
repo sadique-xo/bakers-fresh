@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function OrderSuccessDetailPage(props: PageProps) {
   const { id } = await props.params;
   return (
-    <div className="mx-auto w-full max-w-2xl px-5 py-12 md:px-8 md:py-16">
+    <div className="mx-auto w-full max-w-2xl px-4 py-10 sm:px-5 md:px-8 md:py-16">
       <OrderSuccessContent expectedOrderId={id} />
     </div>
   );

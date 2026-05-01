@@ -16,8 +16,8 @@ export default async function CakesPage() {
   return (
     <>
       <CakesCatalog cakes={cakes} />
-      <div className="mx-auto max-w-7xl px-5 pb-14 pt-2 md:px-8 md:pb-20">
-        <p className="mx-auto max-w-3xl font-sans text-sm leading-relaxed text-[var(--color-ink-soft)]">
+      <div className="mx-auto max-w-7xl px-4 pb-14 pt-2 sm:px-5 md:px-8 md:pb-20">
+        <p className="mx-auto max-w-3xl font-sans text-xs leading-relaxed text-[var(--color-ink-soft)] sm:text-sm">
           prices shown are starting prices for 1kg. eggless option available on most cakes (10-15%
           extra). all prices include taxes. delivery within ranchi only. for outside-ranchi orders,
           contact us.
