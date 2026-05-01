@@ -13,8 +13,12 @@ export function getSiteUrl(): string {
 }
 
 /** Default Open Graph / Twitter card image in `/public` (1200×630). */
-export const defaultOgImageUrl =
-  "/" + encodeURIComponent("Social Image for Websites.webp");
+export const defaultOgImageUrl = "/og-default.webp";
+
+/** Site-wide default title and description (root layout + share cards). */
+export const defaultShareTitle = "baker's fresh | custom cakes ranchi";
+export const defaultShareDescription =
+  "handcrafted custom cakes and bakes in ranchi. order online, we call you back within 2 hours.";
 
 export const siteName = "baker's fresh";
 
@@ -88,20 +92,17 @@ export function buildPageMetadata({
 export function buildHomeMetadata(): Metadata {
   const base = getSiteUrl();
   const url = `${base}/`;
-  const absoluteTitle = "baker's fresh | custom cakes ranchi";
-  const description =
-    "handcrafted custom cakes and bakes in ranchi. order online, we call you back within 2 hours.";
 
   return {
-    title: { absolute: absoluteTitle },
-    description,
+    title: { absolute: defaultShareTitle },
+    description: defaultShareDescription,
     alternates: { canonical: url },
     openGraph: {
       type: "website",
       locale: "en_IN",
       url,
-      title: absoluteTitle,
-      description,
+      title: defaultShareTitle,
+      description: defaultShareDescription,
       siteName,
       images: [
         {
@@ -114,8 +115,8 @@ export function buildHomeMetadata(): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title: absoluteTitle,
-      description,
+      title: defaultShareTitle,
+      description: defaultShareDescription,
       images: [defaultOgImageUrl],
     },
   };

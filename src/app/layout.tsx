@@ -5,6 +5,8 @@ import { AppToaster } from "@/components/providers/app-toaster";
 import {
   defaultKeywords,
   defaultOgImageUrl,
+  defaultShareDescription,
+  defaultShareTitle,
   getSiteUrl,
   siteName,
 } from "@/lib/seo";
@@ -42,11 +44,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "baker's fresh | custom cakes ranchi",
+    default: defaultShareTitle,
     template: "%s | baker's fresh",
   },
-  description:
-    "handcrafted custom cakes and bakes in ranchi. order online, we call you back within 2 hours.",
+  description: defaultShareDescription,
   applicationName: siteName,
   keywords: defaultKeywords,
   authors: [{ name: siteName, url: getSiteUrl() }],
@@ -59,6 +60,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName,
+    title: defaultShareTitle,
+    description: defaultShareDescription,
     images: [
       {
         url: defaultOgImageUrl,
@@ -70,6 +73,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    title: defaultShareTitle,
+    description: defaultShareDescription,
+    images: [defaultOgImageUrl],
   },
   robots: {
     index: true,
