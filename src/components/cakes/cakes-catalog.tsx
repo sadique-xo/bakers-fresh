@@ -146,76 +146,109 @@ export function CakesCatalog({ cakes }: CatalogProps) {
   }, [cakes, tab, search, sort]);
 
   return (
-    <>
-      <div className="mx-auto max-w-7xl px-4 pt-10 sm:px-5 md:px-8 md:pt-12 lg:px-10">
-        <div className="flex items-start justify-between gap-3 sm:gap-6">
-          <h1 className="min-w-0 flex-1 font-serif text-[1.875rem] font-semibold leading-tight tracking-tight text-[var(--color-ink)] sm:text-4xl md:text-5xl">
-            our cakes
-          </h1>
-          <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-            <SheetTrigger
-              className={cn(
-                "inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-input bg-background shadow-[var(--shadow-ambient-pink)] outline-none transition-colors hover:bg-muted md:hidden",
-              )}
-              aria-label="sort and filters">
-              <SlidersHorizontal className="size-[22px] text-[var(--color-ink-soft)]" />
-            </SheetTrigger>
-            <SheetContent
-              side="bottom"
-              className="max-h-[88vh] rounded-t-2xl pb-[max(1.25rem,env(safe-area-inset-bottom))]"
-            >
-              <SheetHeader>
-                <SheetTitle className="text-left font-serif text-xl font-semibold normal-case text-[var(--color-ink)]">
-                  sort
-                </SheetTitle>
-              </SheetHeader>
-              <div className="space-y-4 px-4 pb-6 [&_label]:min-w-0 [&_label]:leading-snug">
-                <RadioGroup
-                  className="grid gap-3"
-                  value={sort}
-                  onValueChange={(v) => setSort(v as SortId)}>
-                  {SORT_OPTIONS.map((opt) => (
-                    <div key={opt.id} className="flex items-start gap-3">
-                      <RadioGroupItem value={opt.id} id={`sort-${opt.id}`} />
-                      <Label htmlFor={`sort-${opt.id}`} className="cursor-pointer font-normal">
-                        {opt.label}
-                      </Label>
-                    </div>
-                  ))}
-                </RadioGroup>
-                {search.trim() ? (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="w-full rounded-full"
-                    onClick={() => setSearch("")}>
-                    clear search
-                  </Button>
-                ) : null}
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
-        <p className="mt-3 max-w-xl font-sans text-sm leading-relaxed text-[var(--color-ink-soft)] sm:text-base md:text-[1.05rem]">
-          made fresh, customized for you. from classic flavours to mithai fusion.
-        </p>
+    <section className="w-full max-w-[100vw] overflow-x-clip">
+      <div className="mx-auto w-full max-w-7xl px-4 pt-8 sm:px-5 md:px-8 md:pt-12 lg:px-10">
+        <div className="rounded-[2rem] border border-[var(--color-border-soft)] bg-white/55 p-4 shadow-[var(--shadow-ambient-pink)] backdrop-blur-sm sm:p-6 md:p-8">
+          <div className="flex min-w-0 items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="font-[family-name:var(--font-handwritten)] text-xl leading-none text-[var(--color-brand-pink-deep)] sm:text-2xl">
+                freshly baked
+              </p>
+              <h1 className="mt-2 font-serif text-[2rem] font-semibold leading-none tracking-tight text-[var(--color-ink)] sm:text-4xl md:text-5xl">
+                our cakes
+              </h1>
+            </div>
 
-        <div className="relative mt-6 w-full max-w-full md:max-w-md">
-          <Search
-            className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-            aria-hidden
-          />
-          <Input
-            type="search"
-            placeholder="search by name or style…"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="h-11 rounded-full border-[var(--color-border-soft)] bg-white pl-10 pr-4 font-sans shadow-sm"
-            aria-label="search cakes"
-          />
+            <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+              <SheetTrigger
+                className="inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-[var(--color-border-soft)] bg-white shadow-[var(--shadow-ambient-pink)] outline-none transition-colors hover:bg-[var(--color-cream-soft)] md:hidden"
+                aria-label="sort cakes"
+              >
+                <SlidersHorizontal className="size-[21px] text-[var(--color-ink-soft)]" />
+              </SheetTrigger>
+              <SheetContent
+                side="bottom"
+                className="max-h-[88vh] rounded-t-2xl pb-[max(1.25rem,env(safe-area-inset-bottom))]"
+              >
+                <SheetHeader>
+                  <SheetTitle className="text-left font-serif text-xl font-semibold normal-case text-[var(--color-ink)]">
+                    sort cakes
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="space-y-4 px-4 pb-6 [&_label]:min-w-0 [&_label]:leading-snug">
+                  <RadioGroup
+                    className="grid gap-3"
+                    value={sort}
+                    onValueChange={(v) => setSort(v as SortId)}
+                  >
+                    {SORT_OPTIONS.map((opt) => (
+                      <div key={opt.id} className="flex items-start gap-3">
+                        <RadioGroupItem value={opt.id} id={`sort-${opt.id}`} />
+                        <Label htmlFor={`sort-${opt.id}`} className="cursor-pointer font-normal">
+                          {opt.label}
+                        </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                  {search.trim() ? (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="w-full rounded-full"
+                      onClick={() => setSearch("")}
+                    >
+                      clear search
+                    </Button>
+                  ) : null}
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+
+          <p className="mt-4 max-w-2xl text-pretty font-sans text-sm leading-relaxed text-[var(--color-ink-soft)] sm:text-base">
+            browse celebration cakes, photo cakes, mithai fusion, kids themes, and wedding styles.
+            order any cake as-is or ask us to customise it for your occasion.
+          </p>
+
+          <div className="mt-5 grid min-w-0 gap-3 md:grid-cols-[minmax(0,24rem)_1fr] md:items-center">
+            <div className="relative min-w-0">
+              <Search
+                className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
+                aria-hidden
+              />
+              <Input
+                type="search"
+                placeholder="search cakes"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="h-11 w-full min-w-0 rounded-full border-[var(--color-border-soft)] bg-white pl-10 pr-4 font-sans text-base shadow-sm md:text-sm"
+                aria-label="search cakes"
+              />
+            </div>
+
+            <div className="hidden items-center justify-end gap-4 md:flex">
+              <span className="font-sans text-xs font-medium uppercase tracking-wider text-[var(--color-ink-subtle)]">
+                sort
+              </span>
+              <RadioGroup
+                className="flex w-auto flex-wrap gap-4"
+                value={sort}
+                onValueChange={(v) => setSort(v as SortId)}
+              >
+                {SORT_OPTIONS.map((opt) => (
+                  <div key={opt.id} className="flex items-center gap-2">
+                    <RadioGroupItem value={opt.id} id={`desk-sort-${opt.id}`} />
+                    <Label htmlFor={`desk-sort-${opt.id}`} className="cursor-pointer font-normal">
+                      {opt.label}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+          </div>
         </div>
 
-        <div className="hide-scrollbar -mx-4 mb-6 mt-8 flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-4 pb-1 sm:-mx-5 sm:px-5 md:mx-0 md:mb-12 md:flex-wrap md:gap-3 md:overflow-visible md:px-0 md:snap-none">
+        <div className="mt-5 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-3">
           {TABS.map((t) => {
             const active = tab === t.id;
             const count = tabCounts[t.id];
@@ -225,52 +258,48 @@ export function CakesCatalog({ cakes }: CatalogProps) {
                 type="button"
                 onClick={() => setTab(t.id)}
                 className={cn(
-                  "snap-start flex-shrink-0 rounded-full px-4 py-2 font-sans text-[10px] font-bold uppercase tracking-wider transition-[transform,box-shadow,color,background] min-[390px]:px-5 min-[390px]:py-2.5 min-[390px]:text-[11px]",
+                  "min-w-0 rounded-full px-3 py-2.5 text-center font-sans text-[10px] font-bold uppercase tracking-wider transition-[transform,box-shadow,color,background] active:scale-[0.98] sm:px-5 sm:text-[11px]",
                   active
                     ? "bg-[var(--color-brand-pink)] text-white shadow-[var(--shadow-ambient-pink)]"
-                    : "bg-[color-mix(in_srgb,var(--color-cream-soft)_92%,white)] text-[var(--color-ink)] shadow-sm hover:bg-[color-mix(in_srgb,var(--color-cream-soft)_100%,transparent)] active:scale-95",
+                    : "bg-[color-mix(in_srgb,var(--color-cream-soft)_92%,white)] text-[var(--color-ink)] shadow-sm hover:bg-[color-mix(in_srgb,var(--color-cream-soft)_100%,transparent)]",
                 )}
               >
-                {t.label}
-                <span className={cn("ml-1.5 tabular-nums opacity-70", active && "opacity-90")}>
-                  ({count})
+                <span className="truncate">{t.label}</span>
+                <span className={cn("ml-1 tabular-nums opacity-70", active && "opacity-90")}>
+                  {count}
                 </span>
               </button>
             );
           })}
         </div>
 
-        <div className="mb-10 hidden items-center gap-4 md:flex">
-          <span className="font-sans text-xs font-medium uppercase tracking-wider text-[var(--color-ink-subtle)]">
-            sort
-          </span>
-          <RadioGroup
-            className="flex flex-wrap gap-4"
-            value={sort}
-            onValueChange={(v) => setSort(v as SortId)}>
-            {SORT_OPTIONS.map((opt) => (
-              <div key={opt.id} className="flex items-center gap-2">
-                <RadioGroupItem value={opt.id} id={`desk-sort-${opt.id}`} />
-                <Label htmlFor={`desk-sort-${opt.id}`} className="cursor-pointer font-normal">
-                  {opt.label}
-                </Label>
-              </div>
-            ))}
-          </RadioGroup>
+        <div className="mt-6 flex items-center justify-between gap-3">
+          <p className="font-sans text-xs font-medium uppercase tracking-wider text-[var(--color-ink-subtle)]">
+            showing {visible.length} cake{visible.length === 1 ? "" : "s"}
+          </p>
+          {search.trim() ? (
+            <button
+              type="button"
+              className="font-sans text-xs font-semibold text-[var(--color-brand-pink)]"
+              onClick={() => setSearch("")}
+            >
+              clear search
+            </button>
+          ) : null}
         </div>
 
         {visible.length === 0 ? (
-          <p className="rounded-2xl border border-[var(--color-border-soft)] bg-white/70 py-14 text-center font-sans text-[var(--color-ink-soft)]">
+          <p className="mt-5 rounded-2xl border border-[var(--color-border-soft)] bg-white/70 px-5 py-14 text-center font-sans text-[var(--color-ink-soft)]">
             no cakes in this category yet. take a look at our other collections.
           </p>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 [&>*]:min-w-0">
+          <div className="mt-5 grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4 [&>*]:min-w-0">
             {visible.map((cake, i) => (
               <CakeCard key={cake.slug} cake={cake} imagePriority={i < 4} />
             ))}
           </div>
         )}
       </div>
-    </>
+    </section>
   );
 }
