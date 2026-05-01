@@ -1,11 +1,9 @@
 /**
- * Hero: local photography in /public. Featured strip uses local cake shots.
+ * Home “most loved” strip: local photography in /public (see `public/4cake/`).
  */
 import type { CatalogCake } from "@/lib/catalog";
 
-export const STITCH_HOME_HERO = "/hero-image.webp";
-
-/** Home “our most-loved cakes”: image + copy for the first four cards (matches `public/4cake/`). */
+/** Image + copy for the first four cards (matches `public/4cake/`). */
 export const HOME_MOST_LOVED_SLOTS = [
   {
     image: "/4cake/chocolate.webp",

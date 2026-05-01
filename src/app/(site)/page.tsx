@@ -14,12 +14,8 @@ import {
   getSiteOutlets,
   type HomePromoSlide,
 } from "@/lib/queries/public-content";
-import { buildHomeMetadata } from "@/lib/seo";
-import {
-  HOME_MOST_LOVED_SLOTS,
-  STITCH_FALLBACK_FEATURED,
-  STITCH_HOME_HERO,
-} from "@/lib/stitch-home-assets";
+import { buildHomeMetadata, defaultOgImageUrl } from "@/lib/seo";
+import { HOME_MOST_LOVED_SLOTS, STITCH_FALLBACK_FEATURED } from "@/lib/stitch-home-assets";
 import { formatIndiaPhone, siteWhatsappUrl } from "@/lib/site";
 
 export const metadata: Metadata = buildHomeMetadata();
@@ -83,9 +79,9 @@ function HeroSection() {
         </div>
 
         <div className="relative z-10 mt-12 flex w-full justify-center lg:mt-0">
-          <div className="relative aspect-square w-full max-w-xl overflow-hidden rounded-[1.85rem] md:rounded-[2.25rem]">
+          <div className="relative aspect-[1200/630] w-full max-w-xl overflow-hidden rounded-[1.85rem] md:rounded-[2.25rem]">
             <Image
-              src={STITCH_HOME_HERO}
+              src={defaultOgImageUrl}
               alt="baker&apos;s fresh celebration cake"
               fill
               priority
